@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>自动检测</key>
+	<string>auto</string>
+	<key>中文</key>
+	<string>zh</string>
+	<key>英语</key>
+	<string>en</string>
+	<key>日语</key>
+	<string>jp</string>
+	<key>韩语</key>
+	<string>kor</string>
+	<key>意大利语</key>
+	<string>it</string>
+	<key>西班牙语</key>
+	<string>spa</string>
+	<key>文言文</key>
+	<string>wyw</string>
+	<key>粤语</key>
+	<string>yue</string>
+	<key>葡萄牙语</key>
+	<string>pt</string>
+	<key>俄罗斯语</key>
+	<string>ru</string>
+	<key>德语</key>
+	<string>de</string>
+	<key>阿拉伯语</key>
+	<string>ara</string>
+	<key>法语</key>
+	<string>fra</string>
+	<key>泰语</key>
+	<string>th</string>
+</dict>
+</plist>
