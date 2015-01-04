@@ -8,19 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class LPResultSimpleMeans;
+@class LPSimpleMeansExchange;
+
 @interface LPTranslateResult : NSObject {
     NSDictionary *_dict;
+    NSString *_from;
+    NSString *_to;
 }
 
 - (instancetype)initWithTranslateDict:(NSDictionary *)dict;
 
 @property (nonatomic, readonly) NSMutableArray *result;
-@property (nonatomic, readonly) NSMutableArray *symboles;
+@property (nonatomic, readonly) LPResultSimpleMeans *means;
 @property (nonatomic, readonly) NSMutableArray *lijus;
 
 @end
-
-
 
 #pragma mark -
 
@@ -29,16 +32,58 @@
 @property (nonatomic, strong) NSString *src;    // 源
 @end
 
+#pragma mark -
+@interface LPResultSimpleMeans : NSObject
+@property (nonatomic, readonly) NSArray *symboles;
+@property (nonatomic, readonly) LPSimpleMeansExchange *exchange;
 
-@interface LPResultSymbole : NSObject
+- (instancetype)initWithSymbols:(NSArray *)symbols exchange:(NSDictionary *)exchange from:(NSString *)from to:(NSString *)to;
+@end
+
+@interface LPSimpleMeansSymbole : NSObject
 @property (nonatomic, strong) NSMutableArray *symboleParts; // LPSymbolePart
+
 @property (nonatomic, strong) NSString *ph_am;              // 美氏音标
 @property (nonatomic, strong) NSString *ph_en;              // 英式音标
+@end
+
+@interface LPSimpleMeansExchange : NSObject
+@property (nonatomic, strong) NSString *word_done;          // 完成式
+@property (nonatomic, strong) NSString *word_er;            // 比较级
+@property (nonatomic, strong) NSString *word_est;           // 最高级
+@property (nonatomic, strong) NSString *word_ing;           // 正在进行氏
+@property (nonatomic, strong) NSString *word_past;          // 过去式
+@property (nonatomic, strong) NSString *word_pl;            // 复数
+@property (nonatomic, strong) NSString *word_third;
 @end
 
 @interface LPSymbolePart : NSObject
 @property (nonatomic, strong) NSArray *means;        // 词性对应的意思，数组NSString
 @property (nonatomic, strong) NSString *part;        // 词性
 @end
+
+#pragma mark -
+@interface LPResultLiju : NSObject {
+    NSArray *_fristLijuWords;
+    NSArray *_secLijuWords;
+    NSString *_firstLijuStr;
+    NSString *_secLijuStr;
+}
+
+- (instancetype)initWithDoubleLijuWords:(NSArray *)lijuwords anotherLijuWords:(NSArray *)others;
+
+- (NSString *)firstLijuStr;
+- (NSString *)secLijuStr;
+@end
+
+
+@interface LPLijuWord : NSObject
+@property (nonatomic, strong) NSString *word; // 当前单词
+@property (nonatomic, strong) NSString *flag; // 代表当前单词，类似索引
+@property (nonatomic, strong) NSArray *refrenceFlags; // 相关单词对应的flag集合
+@property (nonatomic, assign) BOOL isHot;       // 是否是当前单词
+@property (nonatomic, assign) BOOL hasSpacing;  // 是否带“ ”
+@end
+
 
 

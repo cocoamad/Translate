@@ -57,12 +57,7 @@
     if (translateString.length) {
         NSString *from =  [self.languageDict objectForKey: [[self.fromLanBtn selectedItem] title]];
         NSString *to = [self.languageDict objectForKey: [[self.toLanBtn selectedItem] title]];
-//        [self.service translateString: translateString from: from to: to];
-        DefineWeakSelfBeforeBlock();
-        [self.service translateString: translateString from: from to: to completeBlock:^(LPTranslateResult *result) {
-            DefineStrongSelfInBlock(self);
-            [self.resultField setStringValue: @"123"];
-        }];
+        [self.service translateString: translateString from: from to: to];
     }
 }
 
@@ -88,7 +83,7 @@
             [resultString appendString: @"\n"];
         }
         
-        for (LPResultSymbole *symbole in result.symboles) {
+        for (LPSimpleMeansSymbole *symbole in result.means.symboles) {
             NSString *am = symbole.ph_am;
             NSString *en = symbole.ph_en;
             if (am.length) {
@@ -100,23 +95,31 @@
             [resultString appendFormat: @"\n"];
             
             for (LPSymbolePart *part in symbole.symboleParts) {
-                [resultString appendFormat: @"%@  ", part.part];
+                if (part.part.length)
+                    [resultString appendFormat: @"%@  ", part.part];
                 for (NSString *mean in part.means) {
                     [resultString appendFormat: @"%@;", mean];
                 }
                 [resultString appendFormat: @"\n"];
             }
         }
-        [self.resultField setStringValue: resultString];
+        NSInteger index = 1;
+        for (LPResultLiju *liju in result.lijus) {
+            [resultString appendFormat: @"%ld.  %@", index++,liju.firstLijuStr];
+            [resultString appendString: @"\n"];
+            [resultString appendFormat: @"   %@", liju.secLijuStr];
+            [resultString appendString: @"\n"];
+        }
+        [self.resultField setString: resultString];
     } else {
-        [self.resultField setStringValue: @""];
+        [self.resultField setString: @""];
     }
 
 }
 
 - (void)translateFailed:(NSError *)error
 {
-    [self.resultField setStringValue: [error description]];
+    [self.resultField setString: [error description]];
 }
 
 - (void)translateString2voiceFinished:(NSString *)audioPath source:(NSString *)string

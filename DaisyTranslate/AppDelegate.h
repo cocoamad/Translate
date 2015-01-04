@@ -13,7 +13,7 @@
 @property (weak) IBOutlet NSPopUpButton *fromLanBtn;
 @property (weak) IBOutlet NSPopUpButton *toLanBtn;
 @property (weak) IBOutlet NSTextField *translateField;
-@property (weak) IBOutlet NSTextField *resultField;
+@property (nonatomic, assign) IBOutlet NSTextView *resultField;
 
 - (IBAction)translate:(id)sender;
 @end
