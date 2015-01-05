@@ -95,15 +95,33 @@
     }
     return _lijus;
 }
+
+- (void)dealloc
+{
+    [_lijus removeAllObjects];
+    _means = nil;
+    _result = nil;
+}
 @end
 
 
 #pragma mark  -
 
 @implementation LPSymbolePart
+
+- (void)dealloc
+{
+    _means = nil;
+    _part = nil;
+}
 @end
 
 @implementation LPResultData
+- (void)dealloc
+{
+    _dst = nil;
+    _src = nil;
+}
 @end
 
 @interface LPResultSimpleMeans()
@@ -186,25 +204,48 @@
             ec.word_past = SAFT_NSSTRING(exchange[@"word_past"]);
             ec.word_pl = SAFT_NSSTRING(exchange[@"word_pl"]);
             ec.word_third = SAFT_NSSTRING(exchange[@"word_third"]);
+            return ec;
         }
     }
     @catch (NSException *exception) {
         return nil;
     }
+    return nil;
 }
 
-
+- (void)dealloc
+{
+    _symboles = nil;
+    _exchange = nil;
+}
 
 @end
 
 @implementation LPSimpleMeansSymbole
+
+- (void)dealloc
+{
+    [_symboleParts removeAllObjects];
+    _symboleParts = nil;
+    _ph_am = nil;
+    _ph_en = nil;
+}
 
 @end
 
 
 @implementation LPSimpleMeansExchange
 
-
+- (void)dealloc
+{
+    _word_done = nil;
+    _word_er = nil;
+    _word_est = nil;
+    _word_ing = nil;
+    _word_past = nil;
+    _word_pl = nil;
+    _word_third = nil;
+}
 @end
 
 
@@ -277,10 +318,22 @@
     return resultWords;
 }
 
-
+- (void)dealloc
+{
+    _firstLijuStr = nil;
+    _secLijuStr = nil;
+    _fristLijuWords = nil;
+    _secLijuWords = nil;
+}
 @end
 
 @implementation LPLijuWord
 
+- (void)dealloc
+{
+    _word = nil;
+    _flag = nil;
+    _refrenceFlags = nil;
+}
 
 @end
