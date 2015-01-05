@@ -10,6 +10,8 @@
 
 @class LPResultSimpleMeans;
 @class LPSimpleMeansExchange;
+@class LPCollinsEntryValue;
+@class LPResultCollins;
 
 @interface LPTranslateResult : NSObject {
     NSDictionary *_dict;
@@ -22,17 +24,17 @@
 @property (nonatomic, readonly) NSMutableArray *result;
 @property (nonatomic, readonly) LPResultSimpleMeans *means;
 @property (nonatomic, readonly) NSMutableArray *lijus;
+@property (nonatomic, readonly) LPResultCollins *collins;
 
 @end
 
-#pragma mark -
-
+#pragma mark - 词典
 @interface  LPResultData: NSObject
 @property (nonatomic, strong) NSString *dst;    // 结果
 @property (nonatomic, strong) NSString *src;    // 源
 @end
 
-#pragma mark -
+
 @interface LPResultSimpleMeans : NSObject
 @property (nonatomic, readonly) NSArray *symboles;
 @property (nonatomic, readonly) LPSimpleMeansExchange *exchange;
@@ -48,13 +50,13 @@
 @end
 
 @interface LPSimpleMeansExchange : NSObject
-@property (nonatomic, strong) NSString *word_done;          // 完成式
-@property (nonatomic, strong) NSString *word_er;            // 比较级
-@property (nonatomic, strong) NSString *word_est;           // 最高级
-@property (nonatomic, strong) NSString *word_ing;           // 正在进行氏
-@property (nonatomic, strong) NSString *word_past;          // 过去式
-@property (nonatomic, strong) NSString *word_pl;            // 复数
-@property (nonatomic, strong) NSString *word_third;
+@property (nonatomic, strong) NSArray *word_done;          // 完成式
+@property (nonatomic, strong) NSArray *word_er;            // 比较级
+@property (nonatomic, strong) NSArray *word_est;           // 最高级
+@property (nonatomic, strong) NSArray *word_ing;           // 正在进行氏
+@property (nonatomic, strong) NSArray *word_past;          // 过去式
+@property (nonatomic, strong) NSArray *word_pl;            // 复数
+@property (nonatomic, strong) NSArray *word_third;
 @end
 
 @interface LPSymbolePart : NSObject
@@ -62,7 +64,7 @@
 @property (nonatomic, strong) NSString *part;        // 词性
 @end
 
-#pragma mark -
+#pragma mark -  例句
 @interface LPResultLiju : NSObject {
     NSArray *_fristLijuWords;
     NSArray *_secLijuWords;
@@ -83,6 +85,37 @@
 @property (nonatomic, strong) NSArray *refrenceFlags; // 相关单词对应的flag集合
 @property (nonatomic, assign) BOOL isHot;       // 是否是当前单词
 @property (nonatomic, assign) BOOL hasSpacing;  // 是否带“ ”
+@end
+
+
+#pragma mark - collins
+@interface LPResultCollins : NSObject
+@property (nonatomic, strong) NSArray *collinEntrys;
+@property (nonatomic, strong) NSString *word_name;
+- (instancetype)initWithCollinsDict:(NSDictionary *)dict;
+@end
+
+@interface LPCollinsEntry : NSObject
+@property (nonatomic, strong) NSString *entry_id;
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) LPCollinsEntryValue *value;
+- (instancetype)initWithEntry:(NSDictionary *)entry;
+@end
+
+@interface LPCollinsEntryValue : NSObject
+@property (nonatomic, strong) NSString *def;
+@property (nonatomic, strong) NSString *head_word;
+@property (nonatomic, strong) NSString *trans;
+@property (nonatomic, strong) NSString *propLabel;
+
+@property (nonatomic, strong) NSArray *examples;
+
+- (instancetype)initWithEntryValue:(NSArray *)value WithType:(NSString *)type;
+@end
+
+@interface LPCollinsEntryValueExample : NSObject
+@property (nonatomic, strong) NSString *ex;
+@property (nonatomic, strong) NSString *tran;
 @end
 
 

@@ -110,6 +110,18 @@
             [resultString appendFormat: @"   %@", liju.secLijuStr];
             [resultString appendString: @"\n"];
         }
+        [resultString appendString: @"\n"];
+        [resultString appendString: @"collins"];
+        [resultString appendString: @"\n"];
+        for (LPCollinsEntry *entry in result.collins.collinEntrys) {
+            for (LPCollinsEntryValueExample *ex in entry.value.examples) {
+                [resultString appendFormat: @"%@", ex.ex];
+                [resultString appendString: @"\n"];
+                [resultString appendFormat: @"%@", ex.tran];
+                [resultString appendString: @"\n"];
+            }
+        }
+        
         [self.resultField setString: resultString];
     } else {
         [self.resultField setString: @""];

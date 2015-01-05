@@ -10,11 +10,12 @@
 #import "JSONKit.h"
 
 #define SAFT_NSSTRING(str) [str isKindOfClass: [NSNull class]] == YES ? @"" : str
-
+#define SAFT_NSARRAY(array) [array isKindOfClass: [NSNull class]] == YES ? nil : array
 @implementation LPTranslateResult
 @synthesize result = _result;
 @synthesize means = _means;
 @synthesize lijus = _lijus;
+@synthesize collins = _collins;
 
 - (instancetype)initWithTranslateDict:(NSDictionary *)dict
 {
@@ -96,11 +97,26 @@
     return _lijus;
 }
 
+- (LPResultCollins *)collins
+{
+    if (_collins == nil) {
+        @try {
+            NSDictionary *collinsDict = _dict[@"dict_result"][@"collins"];
+            _collins = [[LPResultCollins alloc] initWithCollinsDict: collinsDict];
+        }
+        @catch (NSException *exception) {
+            _collins = nil;
+        }
+    }
+    return _collins;
+}
+
 - (void)dealloc
 {
     [_lijus removeAllObjects];
     _means = nil;
     _result = nil;
+    _collins = nil;
 }
 @end
 
@@ -197,13 +213,13 @@
     @try {
         if (exchange.count) {
             LPSimpleMeansExchange *ec = [[LPSimpleMeansExchange alloc] init];
-            ec.word_done = SAFT_NSSTRING(exchange[@"word_done"]);
-            ec.word_er = SAFT_NSSTRING(exchange[@"word_er"]);
-            ec.word_est = SAFT_NSSTRING(exchange[@"word_est"]);
-            ec.word_ing = SAFT_NSSTRING(exchange[@"word_ing"]);
-            ec.word_past = SAFT_NSSTRING(exchange[@"word_past"]);
-            ec.word_pl = SAFT_NSSTRING(exchange[@"word_pl"]);
-            ec.word_third = SAFT_NSSTRING(exchange[@"word_third"]);
+            ec.word_done = SAFT_NSARRAY(exchange[@"word_done"]);
+            ec.word_er = SAFT_NSARRAY(exchange[@"word_er"]);
+            ec.word_est = SAFT_NSARRAY(exchange[@"word_est"]);
+            ec.word_ing = SAFT_NSARRAY(exchange[@"word_ing"]);
+            ec.word_past = SAFT_NSARRAY(exchange[@"word_past"]);
+            ec.word_pl = SAFT_NSARRAY(exchange[@"word_pl"]);
+            ec.word_third = SAFT_NSARRAY(exchange[@"word_third"]);
             return ec;
         }
     }
@@ -248,7 +264,7 @@
 }
 @end
 
-
+#pragma mark - 例句
 @implementation LPResultLiju
 
 - (instancetype)initWithDoubleLijuWords:(NSArray *)lijuwords anotherLijuWords:(NSArray *)others
@@ -334,6 +350,168 @@
     _word = nil;
     _flag = nil;
     _refrenceFlags = nil;
+}
+
+@end
+
+#pragma mark -
+
+@implementation LPResultCollins
+
+- (instancetype)initWithCollinsDict:(NSDictionary *)dict
+{
+    if (self = [super init]) {
+        self.collinEntrys = [self parseCollinsDict: dict];
+        self.word_name = [self getWordName: dict];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    self.collinEntrys = nil;
+    self.word_name = nil;
+}
+
+- (NSArray *)parseCollinsDict:(NSDictionary *)dict
+{
+    @try {
+        NSMutableArray *entryObjs = [NSMutableArray array];
+        NSArray *entrys = dict[@"entry"];
+        if (entrys.count) {
+            for (NSDictionary *entry in entrys) {
+                LPCollinsEntry *entryObj = [[LPCollinsEntry alloc] initWithEntry: entry];
+                if (entryObj) {
+                    [entryObjs addObject: entryObj];
+                }
+            }
+        }
+        if (entryObjs.count) {
+            return entryObjs;
+        }
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+    return nil;
+}
+
+- (NSString *)getWordName:(NSDictionary *)dict
+{
+    @try {
+        return SAFT_NSSTRING(dict[@"word_name"]);
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+}
+
+@end
+
+@implementation LPCollinsEntry
+- (instancetype)initWithEntry:(NSDictionary *)entry;
+{
+    if (self = [super init]) {
+        [self parseEntry: entry];
+    }
+    return self;
+}
+
+- (void)parseEntry:(NSDictionary *)entry
+{
+    @try {
+        if (entry.count) {
+            self.type = SAFT_NSSTRING(entry[@"type"]);
+            self.entry_id = SAFT_NSSTRING(entry[@"SAFT_NSSTRING"]);
+            self.value = [[LPCollinsEntryValue alloc] initWithEntryValue: SAFT_NSARRAY(entry[@"value"]) WithType: self.type];
+        }
+    }
+    @catch (NSException *exception) {
+        self.type = nil;
+        self.entry_id = nil;
+        self.value = nil;
+    }
+}
+
+- (void)dealloc
+{
+    self.entry_id = nil;
+    self.type = nil;
+    self.value = nil;
+}
+
+
+@end
+
+@implementation LPCollinsEntryValue
+
+- (instancetype)initWithEntryValue:(NSArray *)values WithType:(NSString *)type
+{
+    if (self = [super init]) {
+        [self parseEntryValue: values WithType: type];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    self.def = nil;
+    self.head_word = nil;
+    self.examples = nil;
+    self.propLabel = nil;
+    self.trans = nil;
+}
+
+- (void)parseEntryValue:(NSArray *)values WithType:(NSString *)type
+{
+    @try {
+        if (values.count > 0) {
+            NSDictionary *value = values[0];
+            if (value.count) {
+                NSMutableArray *valueObjs = [NSMutableArray array];
+                NSArray *mean_type = nil;
+                if ([type isEqualToString: @"mean"]) {
+                    self.def = SAFT_NSSTRING(value[@"def"]);
+                    self.trans = SAFT_NSSTRING(value[@"trans"]);
+                    self.propLabel = SAFT_NSSTRING(value[@"posp"][0][@"label"]);
+                    mean_type = SAFT_NSARRAY(value[@"mean_type"]);
+                } else if ([type isEqualToString: @"rnon"]) {
+                    self.head_word = SAFT_NSSTRING(value[@"head_word"]);
+                    self.def = SAFT_NSARRAY(value[@"mean"][0][@"def"]);
+                    mean_type = SAFT_NSARRAY(value[@"mean"][0][@"mean_type"]);
+                } else {
+                    assert(0);
+                }
+                
+                for (NSDictionary *example in mean_type) {
+                    LPCollinsEntryValueExample *ex = [[LPCollinsEntryValueExample alloc] init];
+                    ex.ex = example[@"example"][0][@"ex"];
+                    ex.tran = example[@"example"][0][@"tran"];
+                    if (ex.ex.length && ex.tran.length) {
+                        [valueObjs addObject: ex];
+                    }
+                }
+                
+                if (valueObjs.count) {
+                    _examples = [NSArray arrayWithArray: valueObjs];
+                } else _examples = nil;
+            }
+        }
+    }
+    @catch (NSException *exception) {
+        self.def = nil;
+        self.head_word = nil;
+        self.examples = nil;
+    }
+}
+@end
+
+@implementation LPCollinsEntryValueExample
+
+- (void)dealloc
+{
+    self.ex = nil;
+    self.tran = nil;
 }
 
 @end
