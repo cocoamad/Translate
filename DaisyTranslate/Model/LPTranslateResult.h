@@ -105,7 +105,7 @@
 @interface LPCollinsEntryValue : NSObject
 @property (nonatomic, strong) NSString *def;
 @property (nonatomic, strong) NSString *head_word;
-@property (nonatomic, strong) NSString *trans;
+@property (nonatomic, strong) NSString *tran;
 @property (nonatomic, strong) NSString *propLabel;
 
 @property (nonatomic, strong) NSArray *examples;
@@ -119,4 +119,12 @@
 @end
 
 
-
+//@interface LPResultTongFanYiCis : NSObject
+//@property (nonatomic, strong) NSArray *tongyicis;
+//@property (nonatomic, strong) NSArray *fanyicis;
+//@end
+//
+//@interface LPRefrenceCi : NSObject
+//@property (nonatomic, strong) NSString *word_mean;
+//@property (nonatomic, strong) NSArray *ci_name;
+//@end

@@ -459,7 +459,7 @@
     self.head_word = nil;
     self.examples = nil;
     self.propLabel = nil;
-    self.trans = nil;
+    self.tran = nil;
 }
 
 - (void)parseEntryValue:(NSArray *)values WithType:(NSString *)type
@@ -472,15 +472,15 @@
                 NSArray *mean_type = nil;
                 if ([type isEqualToString: @"mean"]) {
                     self.def = SAFT_NSSTRING(value[@"def"]);
-                    self.trans = SAFT_NSSTRING(value[@"trans"]);
-                    self.propLabel = SAFT_NSSTRING(value[@"posp"][0][@"label"]);
+                    self.tran = SAFT_NSSTRING(value[@"trans"]);
+                    if ([value[@"posp"] count]) {
+                        self.propLabel = SAFT_NSSTRING(value[@"posp"][0][@"label"]);
+                    }
                     mean_type = SAFT_NSARRAY(value[@"mean_type"]);
                 } else if ([type isEqualToString: @"rnon"]) {
                     self.head_word = SAFT_NSSTRING(value[@"head_word"]);
                     self.def = SAFT_NSARRAY(value[@"mean"][0][@"def"]);
                     mean_type = SAFT_NSARRAY(value[@"mean"][0][@"mean_type"]);
-                } else {
-                    assert(0);
                 }
                 
                 for (NSDictionary *example in mean_type) {

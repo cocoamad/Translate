@@ -7,14 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "LPCoustomView.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate>
 
-@property (weak) IBOutlet NSPopUpButton *fromLanBtn;
-@property (weak) IBOutlet NSPopUpButton *toLanBtn;
-@property (weak) IBOutlet NSTextField *translateField;
-@property (nonatomic, assign) IBOutlet NSTextView *resultField;
+@property (assign) IBOutlet LPCoustomView *titleBarView;
 
-- (IBAction)translate:(id)sender;
+@property (nonatomic, assign) IBOutlet NSTableView *tableview;
 @end
 
