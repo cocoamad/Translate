@@ -52,6 +52,12 @@ static NSString *lock = @"lock";
     }
 }
 
+- (void)cancel
+{
+    [self.translateRequest clearDelegatesAndCancel];
+    [self.audioRequest clearDelegatesAndCancel];
+}
+
 - (void)translateString2voice:(NSString *)string from:(NSString *)fromLanguage speed:(NSInteger)speed;
 {
     if (string.length <= 0) {

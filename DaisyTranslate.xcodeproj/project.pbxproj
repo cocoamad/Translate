@@ -30,6 +30,9 @@
 		BCC804AC1A6C0AB400BA94EF /* LPInputTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC804AB1A6C0AB400BA94EF /* LPInputTableCellView.m */; };
 		BCC804AF1A6D37CB00BA94EF /* LPInputFootTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC804AE1A6D37CB00BA94EF /* LPInputFootTableCellView.m */; };
 		BCC804B21A6D49E100BA94EF /* LPTranslateResultTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC804B11A6D49E100BA94EF /* LPTranslateResultTableCellView.m */; };
+		BCC804B61A6FDDAE00BA94EF /* LPMetroButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC804B51A6FDDAE00BA94EF /* LPMetroButton.m */; };
+		BCC804B91A6FF9D600BA94EF /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC804B81A6FF9D600BA94EF /* NS(Attributed)String+Geometrics.m */; };
+		BCC804BB1A6FFD5D00BA94EF /* LPTranslateResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC804BA1A6FFD5D00BA94EF /* LPTranslateResultTableCellView.xib */; };
 		BCC8BFCC1A49B2830048F3B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8BFCB1A49B2830048F3B5 /* AppDelegate.m */; };
 		BCC8BFCE1A49B2830048F3B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8BFCD1A49B2830048F3B5 /* main.m */; };
 		BCC8BFD01A49B2830048F3B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC8BFCF1A49B2830048F3B5 /* Images.xcassets */; };
@@ -76,8 +79,8 @@
 		BCC8042A1A62BECC00BA94EF /* th@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "th@2x.png"; sourceTree = "<group>"; };
 		BCC8042C1A62BECC00BA94EF /* uk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uk@2x.png"; sourceTree = "<group>"; };
 		BCC8042E1A62BECC00BA94EF /* zh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh@2x.png"; sourceTree = "<group>"; };
-		BCC8044E1A6B7D3F00BA94EF /* LPCoustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPCoustomView.h; sourceTree = "<group>"; };
-		BCC8044F1A6B7D3F00BA94EF /* LPCoustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPCoustomView.m; sourceTree = "<group>"; };
+		BCC8044E1A6B7D3F00BA94EF /* LPCoustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LPCoustomView.h; path = ../LPCoustomView.h; sourceTree = "<group>"; };
+		BCC8044F1A6B7D3F00BA94EF /* LPCoustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LPCoustomView.m; path = ../LPCoustomView.m; sourceTree = "<group>"; };
 		BCC8046E1A6BB1AA00BA94EF /* NSTextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+Placeholder.h"; sourceTree = "<group>"; };
 		BCC8046F1A6BB1AA00BA94EF /* NSTextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+Placeholder.m"; sourceTree = "<group>"; };
 		BCC804731A6BC52500BA94EF /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
@@ -97,6 +100,11 @@
 		BCC804AE1A6D37CB00BA94EF /* LPInputFootTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPInputFootTableCellView.m; sourceTree = "<group>"; };
 		BCC804B01A6D49E100BA94EF /* LPTranslateResultTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPTranslateResultTableCellView.h; sourceTree = "<group>"; };
 		BCC804B11A6D49E100BA94EF /* LPTranslateResultTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPTranslateResultTableCellView.m; sourceTree = "<group>"; };
+		BCC804B41A6FDDAE00BA94EF /* LPMetroButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LPMetroButton.h; path = ../LPMetroButton.h; sourceTree = "<group>"; };
+		BCC804B51A6FDDAE00BA94EF /* LPMetroButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LPMetroButton.m; path = ../LPMetroButton.m; sourceTree = "<group>"; };
+		BCC804B71A6FF9D600BA94EF /* NS(Attributed)String+Geometrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NS(Attributed)String+Geometrics.h"; sourceTree = "<group>"; };
+		BCC804B81A6FF9D600BA94EF /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
+		BCC804BA1A6FFD5D00BA94EF /* LPTranslateResultTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPTranslateResultTableCellView.xib; sourceTree = "<group>"; };
 		BCC8BFC51A49B2830048F3B5 /* DaisyTranslate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaisyTranslate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC8BFC91A49B2830048F3B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCC8BFCA1A49B2830048F3B5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -209,12 +217,17 @@
 		BCC804A91A6C0A8900BA94EF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BCC8044E1A6B7D3F00BA94EF /* LPCoustomView.h */,
+				BCC8044F1A6B7D3F00BA94EF /* LPCoustomView.m */,
+				BCC804B41A6FDDAE00BA94EF /* LPMetroButton.h */,
+				BCC804B51A6FDDAE00BA94EF /* LPMetroButton.m */,
 				BCC804AA1A6C0AB400BA94EF /* LPInputTableCellView.h */,
 				BCC804AB1A6C0AB400BA94EF /* LPInputTableCellView.m */,
 				BCC804AD1A6D37CB00BA94EF /* LPInputFootTableCellView.h */,
 				BCC804AE1A6D37CB00BA94EF /* LPInputFootTableCellView.m */,
 				BCC804B01A6D49E100BA94EF /* LPTranslateResultTableCellView.h */,
 				BCC804B11A6D49E100BA94EF /* LPTranslateResultTableCellView.m */,
+				BCC804BA1A6FFD5D00BA94EF /* LPTranslateResultTableCellView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,10 +258,10 @@
 			children = (
 				BCC8BFCA1A49B2830048F3B5 /* AppDelegate.h */,
 				BCC8BFCB1A49B2830048F3B5 /* AppDelegate.m */,
-				BCC8044E1A6B7D3F00BA94EF /* LPCoustomView.h */,
-				BCC8044F1A6B7D3F00BA94EF /* LPCoustomView.m */,
 				BCC8046E1A6BB1AA00BA94EF /* NSTextView+Placeholder.h */,
 				BCC8046F1A6BB1AA00BA94EF /* NSTextView+Placeholder.m */,
+				BCC804B71A6FF9D600BA94EF /* NS(Attributed)String+Geometrics.h */,
+				BCC804B81A6FF9D600BA94EF /* NS(Attributed)String+Geometrics.m */,
 				BCC804A91A6C0A8900BA94EF /* View */,
 				BCC8C0241A49C9320048F3B5 /* Model */,
 				BCC8C01A1A49BC1E0048F3B5 /* Core */,
@@ -438,6 +451,7 @@
 				BCC8BFD01A49B2830048F3B5 /* Images.xcassets in Resources */,
 				BCC8BFD31A49B2830048F3B5 /* MainMenu.xib in Resources */,
 				BCC804321A62BECC00BA94EF /* de@2x.png in Resources */,
+				BCC804BB1A6FFD5D00BA94EF /* LPTranslateResultTableCellView.xib in Resources */,
 				BCC8043E1A62BECC00BA94EF /* ru@2x.png in Resources */,
 				BCC804401A62BECC00BA94EF /* sp@2x.png in Resources */,
 				BCC8043C1A62BECC00BA94EF /* pt@2x.png in Resources */,
@@ -468,7 +482,9 @@
 				BCC8C00B1A49B9650048F3B5 /* ASINetworkQueue.m in Sources */,
 				BCC8C0071A49B9650048F3B5 /* ASIDownloadCache.m in Sources */,
 				BCC8C00A1A49B9650048F3B5 /* ASIInputStream.m in Sources */,
+				BCC804B61A6FDDAE00BA94EF /* LPMetroButton.m in Sources */,
 				BCC804991A6BC52500BA94EF /* INAppStoreWindow.m in Sources */,
+				BCC804B91A6FF9D600BA94EF /* NS(Attributed)String+Geometrics.m in Sources */,
 				BCC8C0051A49B9650048F3B5 /* ASIDataCompressor.m in Sources */,
 				BCC804981A6BC52500BA94EF /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				BCC8BFCC1A49B2830048F3B5 /* AppDelegate.m in Sources */,

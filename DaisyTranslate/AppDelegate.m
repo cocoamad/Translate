@@ -12,6 +12,7 @@
 #import "INAppStoreWindow.h"
 #import "LPInputTableCellView.h"
 #import "LPInputFootTableCellView.h"
+#import "LPTranslateResultTableCellView.h"
 
 typedef enum {
     kRowInput = 0,
@@ -20,14 +21,16 @@ typedef enum {
 } ROW_TYPE;
 
 #define InPutCellHeight 156
-#define InPutFootCellHeight 37
+#define InPutFootCellHeight 42
 
 typedef void (^WindowAnimationCompleteBlock)(void);
 
-@interface AppDelegate () <LPInputTableCellViewDelegate>
+@interface AppDelegate () <LPInputTableCellViewDelegate,
+LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate>
 
 @property (weak) IBOutlet NSWindow *window;
 @property (nonatomic, assign) NSInteger numberOfRow;
+@property (nonatomic, strong) LPTranslateService *service;
 @end
 
 @implementation AppDelegate
@@ -37,6 +40,8 @@ typedef void (^WindowAnimationCompleteBlock)(void);
     
     _numberOfRow = 1;
     [self.tableview setSelectionHighlightStyle: NSTableViewSelectionHighlightStyleNone];
+    [self.tableview setGridStyleMask: NSTableViewGridNone];
+    self.tableview.backgroundColor = [NSColor colorWithCalibratedRed: 44. / 255 green: 60. / 255 blue: 71. / 255 alpha: 1];
 //    self.window.titleBarHeight = 25;
 //    self.window.title = @"aTranslator";
 //    self.window.titleBarDrawingBlock = ^(BOOL drawsAsMainWindow, CGRect drawingRect,
@@ -60,6 +65,21 @@ typedef void (^WindowAnimationCompleteBlock)(void);
     [self.tableview reloadData];
 }
 
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
+{
+    if (!flag){
+        [_window makeKeyAndOrderFront: nil];
+    }
+    
+    return YES;
+}
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification {
+    // Insert code here to tear down your application
+}
+
+#pragma mark - NSTableViewDelegate
+
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row NS_AVAILABLE_MAC(10_7);
 {
     if (row == kRowInput) {
@@ -71,9 +91,18 @@ typedef void (^WindowAnimationCompleteBlock)(void);
         return cell;
     } else if (row == kRowFoot) {
         LPInputFootTableCellView *cell = [[LPInputFootTableCellView alloc] initWithFrame: NSMakeRect(0, 0, NSWidth(tableView.frame), [self heightOfRow: row])];
+        cell.delegate = self;
         return cell;
     } else if (row == kRowResult) {
-        
+        NSArray *views = nil;
+        BOOL success = [[NSBundle mainBundle] loadNibNamed: @"LPTranslateResultTableCellView" owner: self topLevelObjects: &views];
+        if (success && views.count) {
+            for(NSView *view in views) {
+                if ([view isKindOfClass: [LPTranslateResultTableCellView class]])
+                    return view;
+            }
+        }
+        return nil;
     }
     return nil;
 }
@@ -88,6 +117,7 @@ typedef void (^WindowAnimationCompleteBlock)(void);
     return [self heightOfRow: row];
 }
 
+#pragma mark calc height
 - (CGFloat)heightOfRow:(NSInteger)rowIndex
 {
     if (rowIndex == kRowInput) {
@@ -104,11 +134,14 @@ typedef void (^WindowAnimationCompleteBlock)(void);
 {
     if (rowNumber == 1) {
         return InPutCellHeight;
-    } else {
+    } else if (rowNumber == 2){
         return InPutCellHeight + InPutFootCellHeight;
+    } else {
+        return InPutCellHeight + InPutFootCellHeight + 80;
     }
 }
 
+#pragma mark Cell Delegate
 - (void)footViewWillShow:(LPInputTableCellView *)view
 {
     [_tableview insertRowsAtIndexes: [NSIndexSet indexSetWithIndex: 1] withAnimation: NSTableViewAnimationEffectNone];
@@ -122,12 +155,28 @@ typedef void (^WindowAnimationCompleteBlock)(void);
 - (void)footViewWillHide:(LPInputTableCellView *)view
 {
     [self doWindowAniamtion: 1 completeBlock:^{
-        [_tableview removeRowsAtIndexes: [NSIndexSet indexSetWithIndex: 1] withAnimation: NSTableViewAnimationEffectNone];
+        NSInteger row = MAX(1, [_tableview numberOfRows]);
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange: NSMakeRange(1, row - 1)];
+        [_tableview removeRowsAtIndexes: indexSet withAnimation: NSTableViewAnimationEffectNone];
         _numberOfRow = 1;
     }];
 }
 
 
+- (void)translateClick:(LPInputFootTableCellView *)view;
+{
+    [self.service cancel];
+    
+    LPInputTableCellView *cell = [self.tableview viewAtColumn: 0 row: 0 makeIfNecessary: NO];
+    if (cell) {
+        NSString *translateString = cell.inputTextView.string;
+        if (translateString.length) {
+            [self.service translateString: translateString from: @"en" to: @"zh"];
+        }
+    }
+}
+
+#pragma mark - WindowAnimation
 - (void)doWindowAniamtion:(NSInteger)rowNumber completeBlock:(WindowAnimationCompleteBlock)block
 {
     NSRect windowRect = self.window.frame;
@@ -142,81 +191,68 @@ typedef void (^WindowAnimationCompleteBlock)(void);
     }];
 }
 
-//- (void)didChangeText:(NSNotification *)notification;
-//{
-//    NSTextView *textView = [notification object];
-//    if ((textView = self.inputTextView)) {
-//        [self handleTextChangedAnimaiton: textView.string.length > 0];
-//    }
-//    
-//}
-//
-//- (void)handleTextChangedAnimaiton:(BOOL)hasContent
-//{
-//    if (hasContent) {
-//        if (!self.footView.superview) {
-//            NSRect footViewFrame = self.footView.frame;
-//            NSRect windowFrame = self.window.frame;
-//            windowFrame.origin.y -= NSHeight(footViewFrame);
-//            windowFrame.size.height += NSHeight(footViewFrame);
-//            
-//            footViewFrame.origin.x = 0;
-//            footViewFrame.origin.y = -NSHeight(footViewFrame);
-//            footViewFrame.size.width = NSWidth(windowFrame);
-//            
-//            [self.footView setFrame: footViewFrame];
-//            [self.window.contentView addSubview: self.footView];
-//            
-//            [[NSAnimationContext currentContext] setDuration: WindowAniamtionDuration];
-//            [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-//                [[self.window animator] setFrame: windowFrame display: YES];
-//                [[self.footView animator] setAlphaValue: 1.0f];
-//            } completionHandler:^{
-//                [self.footView setFrameOrigin: NSMakePoint(0, 0)];
-//                [self.inputTextView setFrameOrigin:NSMakePoint(NSMinX(self.inputTextView.frame), NSMaxY(self.footView.frame))];
-//            }];
-//        }
-//    } else {
-//        NSRect windowFrame = self.window.frame;
-//        NSRect footViewFrame = self.footView.frame;
-//        windowFrame.origin.y += NSHeight(footViewFrame);
-//        windowFrame.size.height -= NSHeight(footViewFrame);
-//        
-//        [[NSAnimationContext currentContext] setDuration: WindowAniamtionDuration];
-//        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-//            [[self.window animator] setFrame: windowFrame display: YES];
-//        } completionHandler:^{
-//            [self.footView removeFromSuperview];
-//            [self.inputTextView setFrameOrigin: NSMakePoint(0, 0)];
-//        }];
-//    }
-//}
-
-
-- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
+#pragma mark - Translate Service
+- (LPTranslateService *)service
 {
-    if (!flag){
-        [_window makeKeyAndOrderFront: nil];
+    if (_service == nil) {
+        _service = [[LPTranslateService alloc] init];
+        _service.delegate = self;
+    }
+    return _service;
+}
+
+- (void)translateDidFinished:(LPTranslateResult *)result
+{
+    if ([self.tableview numberOfRows] == 2) {
+        
+        [_tableview insertRowsAtIndexes: [NSIndexSet indexSetWithIndex: 2] withAnimation: NSTableViewAnimationEffectNone];
+        _numberOfRow = 3;
+        [self doWindowAniamtion: 3 completeBlock:^{
+            
+        }];
+        
+    }
+
+    
+
+    
+    
+    NSMutableString *resultString = [NSMutableString new];
+    for (LPResultData *data in result.result) {
+        NSString *string = data.dst;
+        [resultString appendString: string];
+        [resultString appendString: @"\n"];
     }
     
-    return YES;
+    for (LPSimpleMeansSymbole *symbole in result.means.symboles) {
+        NSString *am = symbole.ph_am;
+        NSString *en = symbole.ph_en;
+        if (am.length) {
+            [resultString appendFormat: @"[美][%@]  ", am];
+        }
+        if (en.length) {
+            [resultString appendFormat: @"[英][%@]", en];
+        }
+        [resultString appendFormat: @"\n"];
+
+        for (LPSymbolePart *part in symbole.symboleParts) {
+            if (part.part.length)
+                [resultString appendFormat: @"%@  ", part.part];
+            for (NSString *mean in part.means) {
+                [resultString appendFormat: @"%@;", mean];
+            }
+            [resultString appendFormat: @"\n"];
+        }
+    }
+    
+    NSLog(@"%@", resultString);
 }
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
-}
-
-//#pragma mark Action
-//
-- (IBAction)translate:(id)sender
+- (void)translateFailed:(NSError *)error
 {
-//    NSString *translateString = self.translateField.stringValue;
-//    if (translateString.length) {
-//        NSString *from =  [self.languageDict objectForKey: [[self.fromLanBtn selectedItem] title]];
-//        NSString *to = [self.languageDict objectForKey: [[self.toLanBtn selectedItem] title]];
-//        [self.service translateString: translateString from: from to: to];
-//    }
+    NSLog(@"%@", error);
 }
+
 //
 //- (IBAction)playSound:(id)sender
 //{

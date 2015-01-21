@@ -670,14 +670,14 @@
         <window title="aTranslator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="452" height="156"/>
+            <rect key="contentRect" x="335" y="390" width="465" height="156"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="5" width="452" height="156"/>
+                <rect key="frame" x="0.0" y="0.0" width="465" height="156"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="iRp-ww-hVQ">
-                        <rect key="frame" x="-1" y="0.0" width="458" height="157"/>
+                    <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="iRp-ww-hVQ">
+                        <rect key="frame" x="-1" y="0.0" width="471" height="157"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="ZVR-Qm-6st">
                             <rect key="frame" x="1" y="0.0" width="238" height="134"/>
@@ -690,7 +690,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="455" minWidth="40" maxWidth="1000" id="yNi-by-ZF3">
+                                        <tableColumn width="468" minWidth="40" maxWidth="1000" id="yNi-by-ZF3">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -704,11 +704,11 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="wRU-es-61e">
-                                                    <rect key="frame" x="1" y="1" width="455" height="17"/>
+                                                    <rect key="frame" x="1" y="1" width="468" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="36h-Yc-P3k">
-                                                            <rect key="frame" x="0.0" y="0.0" width="455" height="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="468" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="H8E-QS-MOv">
                                                                 <font key="font" metaFont="system"/>
@@ -743,7 +743,7 @@
                     </scrollView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="241" y="-237"/>
+            <point key="canvasLocation" x="247.5" y="-237"/>
         </window>
     </objects>
 </document>

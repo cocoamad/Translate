@@ -32,6 +32,8 @@ typedef void (^LPTranslateResultBlock)(LPTranslateResult *result);
 
 @interface LPTranslateService : NSObject
 
+- (void)cancel;
+
 @property (nonatomic, weak) id <LPTranslateServiceDelegate> delegate;
 
 - (void)translateString:(NSString *)string from:(NSString *)fromLanguage to:(NSString *)toLanguage;

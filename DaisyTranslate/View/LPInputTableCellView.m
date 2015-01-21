@@ -70,4 +70,10 @@
         }
     }
 }
+
+- (void)drawRect:(NSRect)dirtyRect
+{
+    [[NSColor whiteColor] setFill];
+    NSRectFill(self.bounds);
+}
 @end

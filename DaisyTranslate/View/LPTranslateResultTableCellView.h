@@ -7,7 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "LPTranslateResult.h"
 
-@interface LPTranslateResultTableCellView : NSTableCellView
-
+@interface LPTranslateResultTableCellView : NSView {
+    
+}
+@property (nonatomic, assign) IBOutlet NSTextView *resultTextView;
+@property (nonatomic, strong) LPTranslateResult *result;
 @end
