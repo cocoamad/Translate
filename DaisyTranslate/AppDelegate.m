@@ -13,6 +13,7 @@
 #import "LPInputTableCellView.h"
 #import "LPInputFootTableCellView.h"
 #import "LPTranslateResultTableCellView.h"
+#import "NS(Attributed)String+Geometrics.h"
 
 typedef enum {
     kRowInput = 0,
@@ -22,6 +23,8 @@ typedef enum {
 
 #define InPutCellHeight 156
 #define InPutFootCellHeight 42
+#define TitleBarHeight 22
+#define ResultCellExtraInset  NSEdgeInsetsMake(10, 5, 20, 5)
 
 typedef void (^WindowAnimationCompleteBlock)(void);
 
@@ -30,6 +33,7 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate>
 
 @property (weak) IBOutlet NSWindow *window;
 @property (nonatomic, assign) NSInteger numberOfRow;
+@property (nonatomic, assign) CGFloat resultHeight;
 @property (nonatomic, strong) LPTranslateService *service;
 @end
 
@@ -42,7 +46,7 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate>
     [self.tableview setSelectionHighlightStyle: NSTableViewSelectionHighlightStyleNone];
     [self.tableview setGridStyleMask: NSTableViewGridNone];
     self.tableview.backgroundColor = [NSColor colorWithCalibratedRed: 44. / 255 green: 60. / 255 blue: 71. / 255 alpha: 1];
-//    self.window.titleBarHeight = 25;
+//    self.window.titleBarHeight = TitleBarHeight;
 //    self.window.title = @"aTranslator";
 //    self.window.titleBarDrawingBlock = ^(BOOL drawsAsMainWindow, CGRect drawingRect,
 //                                         CGRectEdge edge, CGPathRef clippingPath)
@@ -125,7 +129,7 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate>
     } else if (rowIndex == kRowFoot) {
         return InPutFootCellHeight;
     } else if (rowIndex == kRowResult) {
-        return 80;
+        return _resultHeight;
     }
     return 30;
 }
@@ -137,8 +141,45 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate>
     } else if (rowNumber == 2){
         return InPutCellHeight + InPutFootCellHeight;
     } else {
-        return InPutCellHeight + InPutFootCellHeight + 80;
+        return InPutCellHeight + InPutFootCellHeight + _resultHeight;
     }
+}
+
+- (CGFloat)heightOfTranslateResult:(LPTranslateResult *)result
+{
+    NSMutableString *resultString = [NSMutableString new];
+    for (LPResultData *data in result.result) {
+        NSString *string = data.dst;
+        [resultString appendString: string];
+        [resultString appendString: @"\n"];
+        [resultString appendString: @"\n"];
+    }
+    
+    for (LPSimpleMeansSymbole *symbole in result.means.symboles) {
+        NSString *am = symbole.ph_am;
+        NSString *en = symbole.ph_en;
+        if (am.length) {
+            [resultString appendFormat: @"[美][%@]  ", am];
+        }
+        if (en.length) {
+            [resultString appendFormat: @"[英][%@]", en];
+        }
+        [resultString appendFormat: @"\n"];
+        
+        for (LPSymbolePart *part in symbole.symboleParts) {
+            if (part.part.length)
+                [resultString appendFormat: @"%@  ", part.part];
+            for (NSString *mean in part.means) {
+                [resultString appendFormat: @"%@;", mean];
+            }
+            [resultString appendFormat: @"\n"];
+        }
+    }
+    
+    CGFloat height = [resultString heightForWidth: NSWidth(_tableview.frame) - ResultCellExtraInset.left - ResultCellExtraInset.right font: [NSFont systemFontOfSize: 12]];
+    height += (ResultCellExtraInset.top + ResultCellExtraInset.bottom);
+    
+    return height;
 }
 
 #pragma mark Cell Delegate
@@ -180,14 +221,16 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate>
 - (void)doWindowAniamtion:(NSInteger)rowNumber completeBlock:(WindowAnimationCompleteBlock)block
 {
     NSRect windowRect = self.window.frame;
-    CGFloat offy = [self heightOfTableView: rowNumber] + 22 - NSHeight(windowRect);
+    CGFloat offy = [self heightOfTableView: rowNumber] + TitleBarHeight - NSHeight(windowRect);
     windowRect.size.height += offy;
     windowRect.origin.y -= offy;
     [[NSAnimationContext currentContext] setDuration: .17];
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         [[self.window animator] setFrame: windowRect display: NO];
     } completionHandler:^{
-        block();
+        if (block) {
+            block();
+        }
     }];
 }
 
@@ -204,48 +247,21 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate>
 - (void)translateDidFinished:(LPTranslateResult *)result
 {
     if ([self.tableview numberOfRows] == 2) {
-        
+        _resultHeight = [self heightOfTranslateResult: result];
         [_tableview insertRowsAtIndexes: [NSIndexSet indexSetWithIndex: 2] withAnimation: NSTableViewAnimationEffectNone];
         _numberOfRow = 3;
-        [self doWindowAniamtion: 3 completeBlock:^{
-            
-        }];
-        
-    }
-
-    
-
-    
-    
-    NSMutableString *resultString = [NSMutableString new];
-    for (LPResultData *data in result.result) {
-        NSString *string = data.dst;
-        [resultString appendString: string];
-        [resultString appendString: @"\n"];
+    } else if ([self.tableview numberOfRows] == 3) {
+        _resultHeight = [self heightOfTranslateResult: result];
+        [_tableview noteHeightOfRowsWithIndexesChanged: [NSIndexSet indexSetWithIndex: 2]];
     }
     
-    for (LPSimpleMeansSymbole *symbole in result.means.symboles) {
-        NSString *am = symbole.ph_am;
-        NSString *en = symbole.ph_en;
-        if (am.length) {
-            [resultString appendFormat: @"[美][%@]  ", am];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        LPTranslateResultTableCellView *cell = [self.tableview viewAtColumn: 0 row: 2 makeIfNecessary: NO];
+        if (cell) {
+            cell.result = result;
         }
-        if (en.length) {
-            [resultString appendFormat: @"[英][%@]", en];
-        }
-        [resultString appendFormat: @"\n"];
-
-        for (LPSymbolePart *part in symbole.symboleParts) {
-            if (part.part.length)
-                [resultString appendFormat: @"%@  ", part.part];
-            for (NSString *mean in part.means) {
-                [resultString appendFormat: @"%@;", mean];
-            }
-            [resultString appendFormat: @"\n"];
-        }
-    }
-    
-    NSLog(@"%@", resultString);
+    });
+    [self doWindowAniamtion: 3 completeBlock: nil];
 }
 
 - (void)translateFailed:(NSError *)error

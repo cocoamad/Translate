@@ -13,5 +13,6 @@
     
 }
 @property (nonatomic, assign) IBOutlet NSTextView *resultTextView;
+
 @property (nonatomic, strong) LPTranslateResult *result;
 @end
