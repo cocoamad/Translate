@@ -123,24 +123,24 @@
     if (self.lanPopover == nil) {
         if (self.lanPopover == nil) {
             RecentListViewController *recentListVC = [[RecentListViewController alloc] initWithNibName: @"RecentListViewController" bundle: nil] ;
-            recentListVC.dataSource = [[LPCommon shareCommon] allLanguages];
+            
             self.lanPopover = [[INPopoverController alloc] initWithContentViewController: recentListVC];
             self.lanPopover.color = LanChoosePopoverColor;
             self.lanPopover.borderColor = LanChoosePopoverColor;
             self.lanPopover.delegate = self;
         }
     }
-//    __weak LPInputFootTableCellView *weakCell = self;
-//    RecentListViewController *vc = (RecentListViewController *)self.lanPopover.contentViewController;
-//
-//    vc.selectedLanBlock = ^(LPLanaguageObject *lan){
-//        if (btn.tag == 1) {
-//            [self resetFromLanguage: lan ToLanguage: nil];
-//        } else if (btn.tag == 2) {
-//            [self resetFromLanguage: nil ToLanguage: lan];
-//        }
-//        [weakCell.lanPopover closePopover: nil];
-//    };
+    __weak LPInputFootTableCellView *weakCell = self;
+    RecentListViewController *vc = (RecentListViewController *)self.lanPopover.contentViewController;
+
+    vc.selectedLanBlock = ^(LPLanaguageObject *lan){
+        if (btn.tag == 1) {
+            [self resetFromLanguage: lan ToLanguage: nil];
+        } else if (btn.tag == 2) {
+            [self resetFromLanguage: nil ToLanguage: lan];
+        }
+        [weakCell.lanPopover closePopover: nil];
+    };
     
     if (btn == self.toBtn) {
         
@@ -150,7 +150,7 @@
 
 - (void)popoverDidClose:(INPopoverController *)popover;
 {
-    NSLog(@"popoverDidClose");
+
 }
 
 - (void)drawRect:(NSRect)dirtyRect
