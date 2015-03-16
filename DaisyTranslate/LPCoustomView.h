@@ -8,9 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-typedef void (^DrawBackgroundBlock)(CGContextRef ctx);
+typedef void (^DrawBackgroundBlock)(CGContextRef ctx, NSRect rect);
 
 @interface LPCoustomView : NSView
 @property (nonatomic, copy) DrawBackgroundBlock drawBackgroundBlock;
+@property (nonatomic, strong) NSColor *backgroundColor;
 - (id)initWithFrame:(NSRect)frameRect DrawBackgroundBlock:(DrawBackgroundBlock)block;
 @end

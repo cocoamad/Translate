@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BCC8BFC41A49B2830048F3B5"
-               BuildableName = "DaisyTranslate.app"
+               BuildableName = "aTranslator.app"
                BlueprintName = "DaisyTranslate"
                ReferencedContainer = "container:DaisyTranslate.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BCC8BFC41A49B2830048F3B5"
-            BuildableName = "DaisyTranslate.app"
+            BuildableName = "aTranslator.app"
             BlueprintName = "DaisyTranslate"
             ReferencedContainer = "container:DaisyTranslate.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BCC8BFC41A49B2830048F3B5"
-            BuildableName = "DaisyTranslate.app"
+            BuildableName = "aTranslator.app"
             BlueprintName = "DaisyTranslate"
             ReferencedContainer = "container:DaisyTranslate.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BCC8BFC41A49B2830048F3B5"
-            BuildableName = "DaisyTranslate.app"
+            BuildableName = "aTranslator.app"
             BlueprintName = "DaisyTranslate"
             ReferencedContainer = "container:DaisyTranslate.xcodeproj">
          </BuildableReference>

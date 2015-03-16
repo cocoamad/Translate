@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "LPCommon.h"
 
 @interface LPMetroButton : NSControl {
     
@@ -22,10 +23,14 @@
 @property (nonatomic, strong) NSColor *disableColor;
 
 @property (nonatomic, strong) NSImage *image;
-
+@property (nonatomic, assign) NSInteger radius;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSFont *titleFont;
 @property (nonatomic, strong) NSColor *titleColor;
+@property (nonatomic, strong) NSColor *mouseDownTitleColor;
+
+
+@property (nonatomic, weak) LPLanaguageObject *object;
 
 - (void)addTarget:(id)target Action:(SEL)action;
 

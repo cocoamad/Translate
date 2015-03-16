@@ -24,6 +24,12 @@
     [self setNeedsDisplay: YES];
 }
 
+- (void)setBackgroundColor:(NSColor *)backgroundColor
+{
+    _backgroundColor = backgroundColor;
+    [self setNeedsDisplay: YES];
+}
+
 - (void)dealloc
 {
     self.drawBackgroundBlock = nil;
@@ -35,7 +41,10 @@
     CGContextRef ctx = [NSGraphicsContext currentContext].graphicsPort;
     CGContextSaveGState(ctx);
     if (_drawBackgroundBlock) {
-        _drawBackgroundBlock(ctx);
+        _drawBackgroundBlock(ctx, self.bounds);
+    } else if (_backgroundColor) {
+        [_backgroundColor setFill];
+        NSRectFill(self.bounds);
     }
 
     CGContextRestoreGState(ctx);

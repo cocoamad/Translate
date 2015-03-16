@@ -17,7 +17,9 @@ static NSString *lock = @"lock";
 @interface LPTranslateService()
 @property (nonatomic, strong) ASIHTTPRequest *audioRequest;
 @property (nonatomic, strong) ASIFormDataRequest *translateRequest;
+@property (nonatomic, strong) ASIFormDataRequest *lanDetectRequest;
 @property (nonatomic, strong) NSString *audioCachePath;
+@property (nonatomic, strong) NSString *detectString;
 @end
 
 @implementation LPTranslateService
@@ -48,14 +50,21 @@ static NSString *lock = @"lock";
         [self.translateRequest addPostValue: toLanguage forKey: TRANSLATE_PARAM_TO];
         [self.translateRequest addPostValue: string forKey: TRANSLATE_PARAM_QUERY];
         [self.translateRequest addPostValue: @"trans" forKey: TRANSLATE_PARAM_TYPE];
+        self.translateRequest.showAccurateProgress = YES;
         [self.translateRequest startAsynchronous];
     }
 }
 
-- (void)cancel
+- (void)cancelAll
 {
     [self.translateRequest clearDelegatesAndCancel];
     [self.audioRequest clearDelegatesAndCancel];
+    [self.lanDetectRequest clearDelegatesAndCancel];
+}
+
+- (void)cancelLanguageDetect;
+{
+    [self.lanDetectRequest clearDelegatesAndCancel];
 }
 
 - (void)translateString2voice:(NSString *)string from:(NSString *)fromLanguage speed:(NSInteger)speed;
@@ -74,19 +83,19 @@ static NSString *lock = @"lock";
     [self.audioRequest startAsynchronous];
 }
 
-- (void)translateString:(NSString *)string from:(NSString *)fromLanguage to:(NSString *)toLanguage completeBlock:(LPTranslateResultBlock)block
+- (void)translateStringDetect:(NSString *)string
 {
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL: [NSURL URLWithString: TRANSLATE_URL]];
-    [request addPostValue: fromLanguage forKey: TRANSLATE_PARAM_FROM];
-    [request addPostValue: toLanguage forKey: TRANSLATE_PARAM_TO];
-    [request addPostValue: string forKey: TRANSLATE_PARAM_QUERY];
-    [request addPostValue: @"trans" forKey: TRANSLATE_PARAM_TYPE];
-    DefineWeakVarBeforeBlock(request);
-    [request setCompletionBlock:^{
-        DefineStrongVarInBlock(request);
-        block([[LPTranslateResult alloc] initWithTranslateDict: request.responseString.objectFromJSONString]);
-    }];
-    [request startAsynchronous];
+    if (string.length <= 0) {
+        return;
+    }
+    
+    [self.lanDetectRequest clearDelegatesAndCancel];
+    
+    self.detectString = string;
+    self.lanDetectRequest = [ASIFormDataRequest requestWithURL: [NSURL URLWithString: LANGUAGE_DETECT_URL]];
+    self.lanDetectRequest.delegate = self;
+    [self.lanDetectRequest addPostValue: string forKey: TRANSLATE_PARAM_QUERY];
+    [self.lanDetectRequest startAsynchronous];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
@@ -98,6 +107,10 @@ static NSString *lock = @"lock";
     } else if (request == self.audioRequest) {
         if ([self.delegate respondsToSelector: @selector(translateString2voiceFailed:source:)]) {
             [self.delegate translateString2voiceFailed: request.error source: nil];
+        }
+    } else if (request == self.lanDetectRequest) {
+        if ([self.delegate respondsToSelector: @selector(languageDetectFailed:error:)]) {
+            [self.delegate languageDetectFailed: self.detectString error: [request.error description]];
         }
     }
 
@@ -124,6 +137,20 @@ static NSString *lock = @"lock";
             }
         }
    
+    } else if (request == self.lanDetectRequest) {
+        NSString *jsonStr = self.lanDetectRequest.responseString;
+        if (jsonStr.length) {
+            NSDictionary *obj = jsonStr.objectFromJSONString;
+            if ([obj[@"error"] intValue] == 0) {
+                if ([self.delegate respondsToSelector: @selector(languageDetectFindshed:lan:)]) {
+                    [self.delegate languageDetectFindshed: self.detectString  lan: obj[@"lan"]];
+                }
+            } else {
+                if ([self.delegate respondsToSelector: @selector(languageDetectFailed:error:)]) {
+                    [self.delegate languageDetectFailed: self.detectString error: obj[@"msg"]];
+                }
+            }
+        }
     }
 
 }

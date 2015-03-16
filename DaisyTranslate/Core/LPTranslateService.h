@@ -26,13 +26,18 @@ typedef void (^LPTranslateResultBlock)(LPTranslateResult *result);
 
 - (void)translateDidFinished:(LPTranslateResult *)result;
 - (void)translateFailed:(NSError *)error;
+
 - (void)translateString2voiceFinished:(NSString *)audioPath source:(NSString *)string;
 - (void)translateString2voiceFailed:(NSError *)error source:(NSString *)string;
+
+- (void)languageDetectFindshed:(NSString *)string lan:(NSString *)lan;
+- (void)languageDetectFailed:(NSString *)string error:(NSString *)error;
 @end
 
 @interface LPTranslateService : NSObject
 
-- (void)cancel;
+- (void)cancelAll;
+- (void)cancelLanguageDetect;
 
 @property (nonatomic, weak) id <LPTranslateServiceDelegate> delegate;
 
@@ -41,4 +46,6 @@ typedef void (^LPTranslateResultBlock)(LPTranslateResult *result);
 - (void)translateString:(NSString *)string from:(NSString *)fromLanguage to:(NSString *)toLanguage completeBlock:(LPTranslateResultBlock)block;
 
 - (void)translateString2voice:(NSString *)string from:(NSString *)fromLanguage speed:(NSInteger)speed;
+
+- (void)translateStringDetect:(NSString *)string;
 @end

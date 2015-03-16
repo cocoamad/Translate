@@ -2,25 +2,34 @@
 //  LPTranslateResultTableCellView.m
 //  DaisyTranslate
 //
-//  Created by 鹏 李 on 1/19/15.
+//  Created by pennyli on 1/19/15.
 //  Copyright (c) 2015 Cocoamad. All rights reserved.
 //
 
 #import "LPTranslateResultTableCellView.h"
+#import "LPCommon.h"
+#import "AppDelegate.h"
 
 @implementation LPTranslateResultTableCellView
 
 - (void)awakeFromNib
 {
-    [self.resultTextView setBackgroundColor: [NSColor colorWithCalibratedRed: 44. / 255 green: 60. / 255 blue: 71. / 255 alpha: 1]];
+    [self.resultTextView setBackgroundColor: FootBarBackgroundColor];
     self.resultTextView.textColor = [NSColor whiteColor];
-    self.resultTextView.font = [NSFont systemFontOfSize: 12];
+    self.resultTextView.font = [NSFont systemFontOfSize: 14];
+}
+
+- (void)setProgress:(CGFloat)precent
+{
+    
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
     // Drawing code here.
+    [LanChoosePopoverColor setFill];
+    NSRectFill(self.bounds);
 }
 
 - (void)setResult:(LPTranslateResult *)result
@@ -33,12 +42,19 @@
 
 - (void)updateUI
 {
+    [[self.resultTextView enclosingScrollView] setFrame: NSMakeRect(ResultCellExtraInset.left, ResultCellExtraInset.bottom, NSWidth(self.frame) - ResultCellExtraInset.left - ResultCellExtraInset.right,  NSHeight(self.frame) - ResultCellExtraInset.top - ResultCellExtraInset.bottom)];
+    
+    [self.botView setFrame: NSMakeRect(0, 0, NSWidth(self.frame), ResultCellExtraInset.bottom)];
+    
     NSMutableString *resultString = [NSMutableString new];
     for (LPResultData *data in _result.result) {
         NSString *string = data.dst;
         [resultString appendString: string];
-        [resultString appendString: @"\n"];
-        [resultString appendString: @"\n"];
+        
+        if (_result.means.symboles.count) {
+            [resultString appendString: @"\n"];
+            [resultString appendString: @"\n"];
+        }
     }
     
     for (LPSimpleMeansSymbole *symbole in _result.means.symboles) {
@@ -50,19 +66,42 @@
         if (en.length) {
             [resultString appendFormat: @"[英][%@]", en];
         }
-        [resultString appendFormat: @"\n"];
         
+        if (symbole.symboleParts.count) {
+            [resultString appendFormat: @"\n"];
+        }
+        
+        NSInteger count = 0;
         for (LPSymbolePart *part in symbole.symboleParts) {
             if (part.part.length)
                 [resultString appendFormat: @"%@  ", part.part];
             for (NSString *mean in part.means) {
                 [resultString appendFormat: @"%@;", mean];
             }
-            [resultString appendFormat: @"\n"];
+            if (count++ != symbole.symboleParts.count - 1) {
+                [resultString appendFormat: @"\n"];
+            }
         }
     }
     
     [self.resultTextView setString: resultString];
 }
 
+
+- (IBAction)copyText:(id)sender
+{
+    NSPasteboard *pb = [NSPasteboard generalPasteboard];
+    [pb clearContents];
+    [pb setString: self.resultTextView.string forType: NSStringPboardType];
+}
+
+- (IBAction)playSound:(id)sender
+{
+    AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
+    NSString *translateString = [[_result.result lastObject] dst];
+    if (translateString.length) {
+        [delegate playSound: translateString to: _result.to];
+    }
+
+}
 @end

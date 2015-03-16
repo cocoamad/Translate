@@ -15,11 +15,11 @@
 
 @interface LPTranslateResult : NSObject {
     NSDictionary *_dict;
-    NSString *_from;
-    NSString *_to;
 }
 
 - (instancetype)initWithTranslateDict:(NSDictionary *)dict;
+@property (nonatomic, strong) NSString *from;
+@property (nonatomic, strong) NSString *to;
 
 @property (nonatomic, readonly) NSMutableArray *result;
 @property (nonatomic, readonly) LPResultSimpleMeans *means;
