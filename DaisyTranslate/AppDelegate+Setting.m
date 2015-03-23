@@ -8,6 +8,11 @@
 
 #import "AppDelegate+Setting.h"
 #import "AppDelegate.h"
+#import <ServiceManagement/ServiceManagement.h>
+
+#define helperAppBundleIdentifier @"com.cocoamad.aTranslatorHelperApp"
+#define terminateNotification @"TERMINATEHELPER"
+
 @implementation AppDelegate (Setting)
 
 #pragma mark - HotKeyControl Delegate
@@ -123,6 +128,35 @@
         
         [self.window setStyleMask: NSTitledWindowMask | NSClosableWindowMask];
         [self.window setTitle: @"aTranslator"];
+    }
+}
+
+- (BOOL)bSupportCopytoPBWhenTranslated
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey: kUserDefault_AutoCopyToPasteboard];
+}
+
+- (IBAction)autoLoginWhenStartup:(NSButton *)btn;
+{
+    BOOL startup = [[NSUserDefaults standardUserDefaults] boolForKey: kUserDefault_AutoLoginWhenStartup];
+    if (startup) {
+        // Turn on launch at login
+        if (!SMLoginItemSetEnabled ((__bridge CFStringRef)helperAppBundleIdentifier, YES)) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            alert.messageText = @"An error ocurred";
+            alert.informativeText = @"Couldn't add Helper App to launch at login item list.";
+            [alert addButtonWithTitle: @"OK"];
+            [alert runModal];
+        }
+    } else {
+        // Turn off launch at login
+        if (!SMLoginItemSetEnabled ((__bridge CFStringRef)helperAppBundleIdentifier, NO)) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            alert.messageText = @"An error ocurred";
+            alert.informativeText = @"Couldn't remove Helper App from launch at login item list.";
+            [alert addButtonWithTitle: @"OK"];
+            [alert runModal];
+        }
     }
 }
 @end

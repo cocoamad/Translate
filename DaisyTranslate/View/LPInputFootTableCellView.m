@@ -51,9 +51,6 @@
 {
     if (self = [super initWithFrame: frameRect]) {
         
-        _progressView = [[ProgressView alloc] initWithFrame: NSMakeRect(0, NSHeight(self.bounds), NSWidth(frameRect), 2)];
-        [self addSubview:_progressView];
-        
         LPMetroButton *fromBtn = [[LPMetroButton alloc] initWithFrame: NSZeroRect];
         fromBtn.title = @"英文";
         fromBtn.object = [[LPCommon shareCommon] languageByKey: @"en"];
@@ -68,7 +65,7 @@
         
         self.fromBtn = fromBtn;
         
-
+        
         
         self.toflagView = [[LPCoustomView alloc] initWithFrame: NSMakeRect(NSMaxX(self.fromBtn.frame) + ChooseLanBtnSpacing, (NSHeight(self.frame) - 2) * .5 - 2, 5, 2)DrawBackgroundBlock:^(CGContextRef ctx, NSRect rect) {
             [NSRGBAColor(148, 173, 188, 1) setFill];

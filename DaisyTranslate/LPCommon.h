@@ -16,6 +16,9 @@ typedef enum {
     kRowResult
 } ROW_TYPE;
 
+#define kUserDefault_AutoCopyToPasteboard @"kUserDefault_AutoCopyToPasteboard"
+#define kUserDefault_AutoLoginWhenStartup @"kUserDefault_AutoLoginWhenStartup"
+
 #define InPutCellMinHeight 157
 #define InputCellMaxHeight 300
 

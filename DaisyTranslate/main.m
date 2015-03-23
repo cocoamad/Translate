@@ -11,7 +11,7 @@
 
 void registerUserDefault()
 {
-    [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"openTranslateWindow" : @{@"code" : @1, @"flag" : @1179648}}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"openTranslateWindow" : @{@"code" : @1, @"flag" : @1179648}, kUserDefault_AutoCopyToPasteboard : @(0), kUserDefault_AutoLoginWhenStartup : @(0)}];
 }
 
 int main(int argc, const char * argv[]) {

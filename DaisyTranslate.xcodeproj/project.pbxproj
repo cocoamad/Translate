@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC5936C51AC053470015A674 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5936C41AC053470015A674 /* ServiceManagement.framework */; };
+		BC5936C71AC055080015A674 /* DaisyTranslateAppHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = BC5936C11AC052230015A674 /* DaisyTranslateAppHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BCB22A5C1AB4032900939577 /* StatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB22A5B1AB4032900939577 /* StatusBarView.m */; };
 		BCB22A5F1AB404E800939577 /* status_icon_hi.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB22A5D1AB404E800939577 /* status_icon_hi.png */; };
 		BCB22A601AB404E800939577 /* status_icon_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB22A5E1AB404E800939577 /* status_icon_normal.png */; };
@@ -84,7 +86,39 @@
 		BCE2F2F81AAC38C90052B5C8 /* AppDelegate+Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE2F2F71AAC38C90052B5C8 /* AppDelegate+Setting.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BC5936C01AC052230015A674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC5936BB1AC052210015A674 /* DaisyTranslateAppHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC5936981AC052210015A674;
+			remoteInfo = DaisyTranslateAppHelper;
+		};
+		BC5936C21AC052230015A674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC5936BB1AC052210015A674 /* DaisyTranslateAppHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC5936AB1AC052210015A674;
+			remoteInfo = DaisyTranslateAppHelperTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BC5936C61AC054D70015A674 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				BC5936C71AC055080015A674 /* DaisyTranslateAppHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BC5936BB1AC052210015A674 /* DaisyTranslateAppHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DaisyTranslateAppHelper.xcodeproj; path = DaisyTranslateAppHelper/DaisyTranslateAppHelper.xcodeproj; sourceTree = "<group>"; };
+		BC5936C41AC053470015A674 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		BCB22A5A1AB4032900939577 /* StatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarView.h; sourceTree = "<group>"; };
 		BCB22A5B1AB4032900939577 /* StatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarView.m; sourceTree = "<group>"; };
 		BCB22A5D1AB404E800939577 /* status_icon_hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_icon_hi.png; sourceTree = "<group>"; };
@@ -221,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC5936C51AC053470015A674 /* ServiceManagement.framework in Frameworks */,
 				BCC8C0131A49B9B40048F3B5 /* libz.1.2.5.dylib in Frameworks */,
 				BCC8C0111A49B9960048F3B5 /* CFNetwork.framework in Frameworks */,
 				BCC8C00F1A49B9870048F3B5 /* SystemConfiguration.framework in Frameworks */,
@@ -230,6 +265,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC5936BC1AC052210015A674 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC5936C11AC052230015A674 /* DaisyTranslateAppHelper.app */,
+				BC5936C31AC052230015A674 /* DaisyTranslateAppHelperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BCC804161A62BECC00BA94EF /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,7 +361,9 @@
 		BCC8BFBC1A49B2830048F3B5 = {
 			isa = PBXGroup;
 			children = (
+				BC5936BB1AC052210015A674 /* DaisyTranslateAppHelper.xcodeproj */,
 				BCC8C0121A49B9B40048F3B5 /* libz.1.2.5.dylib */,
+				BC5936C41AC053470015A674 /* ServiceManagement.framework */,
 				BCC8C0101A49B9960048F3B5 /* CFNetwork.framework */,
 				BCC8C00E1A49B9870048F3B5 /* SystemConfiguration.framework */,
 				BCC8BFC71A49B2830048F3B5 /* DaisyTranslate */,
@@ -511,6 +557,7 @@
 				BCC8BFC11A49B2830048F3B5 /* Sources */,
 				BCC8BFC21A49B2830048F3B5 /* Frameworks */,
 				BCC8BFC31A49B2830048F3B5 /* Resources */,
+				BC5936C61AC054D70015A674 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -546,12 +593,35 @@
 			mainGroup = BCC8BFBC1A49B2830048F3B5;
 			productRefGroup = BCC8BFC61A49B2830048F3B5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BC5936BC1AC052210015A674 /* Products */;
+					ProjectRef = BC5936BB1AC052210015A674 /* DaisyTranslateAppHelper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BCC8BFC41A49B2830048F3B5 /* DaisyTranslate */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BC5936C11AC052230015A674 /* DaisyTranslateAppHelper.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = DaisyTranslateAppHelper.app;
+			remoteRef = BC5936C01AC052230015A674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC5936C31AC052230015A674 /* DaisyTranslateAppHelperTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DaisyTranslateAppHelperTests.xctest;
+			remoteRef = BC5936C21AC052230015A674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BCC8BFC31A49B2830048F3B5 /* Resources */ = {

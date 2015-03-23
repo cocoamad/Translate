@@ -9,6 +9,7 @@
 #import "LPTranslateResultTableCellView.h"
 #import "LPCommon.h"
 #import "AppDelegate.h"
+#import "AppDelegate+Setting.h"
 
 @implementation LPTranslateResultTableCellView
 
@@ -85,6 +86,10 @@
     }
     
     [self.resultTextView setString: resultString];
+    
+    if ([(AppDelegate *)[NSApplication sharedApplication].delegate bSupportCopytoPBWhenTranslated]) {
+        [self copyText: nil];
+    }
 }
 
 

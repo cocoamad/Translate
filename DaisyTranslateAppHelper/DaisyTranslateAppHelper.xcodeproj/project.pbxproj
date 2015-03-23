@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC59369F1AC052210015A674 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC59369E1AC052210015A674 /* AppDelegate.m */; };
+		BC5936A11AC052210015A674 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5936A01AC052210015A674 /* main.m */; };
+		BC5936A31AC052210015A674 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC5936A21AC052210015A674 /* Images.xcassets */; };
+		BC5936A61AC052210015A674 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5936A41AC052210015A674 /* MainMenu.xib */; };
+		BC5936B21AC052210015A674 /* DaisyTranslateAppHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5936B11AC052210015A674 /* DaisyTranslateAppHelperTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BC5936AC1AC052210015A674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC5936901AC052210015A674 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC5936971AC052210015A674;
+			remoteInfo = DaisyTranslateAppHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BC5936981AC052210015A674 /* DaisyTranslateAppHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaisyTranslateAppHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC59369C1AC052210015A674 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC59369D1AC052210015A674 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BC59369E1AC052210015A674 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BC5936A01AC052210015A674 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BC5936A21AC052210015A674 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BC5936A51AC052210015A674 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BC5936AB1AC052210015A674 /* DaisyTranslateAppHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaisyTranslateAppHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC5936B01AC052210015A674 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC5936B11AC052210015A674 /* DaisyTranslateAppHelperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaisyTranslateAppHelperTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC5936951AC052210015A674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC5936A81AC052210015A674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC59368F1AC052210015A674 = {
+			isa = PBXGroup;
+			children = (
+				BC59369A1AC052210015A674 /* DaisyTranslateAppHelper */,
+				BC5936AE1AC052210015A674 /* DaisyTranslateAppHelperTests */,
+				BC5936991AC052210015A674 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BC5936991AC052210015A674 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC5936981AC052210015A674 /* DaisyTranslateAppHelper.app */,
+				BC5936AB1AC052210015A674 /* DaisyTranslateAppHelperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC59369A1AC052210015A674 /* DaisyTranslateAppHelper */ = {
+			isa = PBXGroup;
+			children = (
+				BC59369D1AC052210015A674 /* AppDelegate.h */,
+				BC59369E1AC052210015A674 /* AppDelegate.m */,
+				BC5936A21AC052210015A674 /* Images.xcassets */,
+				BC5936A41AC052210015A674 /* MainMenu.xib */,
+				BC59369B1AC052210015A674 /* Supporting Files */,
+			);
+			path = DaisyTranslateAppHelper;
+			sourceTree = "<group>";
+		};
+		BC59369B1AC052210015A674 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC59369C1AC052210015A674 /* Info.plist */,
+				BC5936A01AC052210015A674 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BC5936AE1AC052210015A674 /* DaisyTranslateAppHelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC5936B11AC052210015A674 /* DaisyTranslateAppHelperTests.m */,
+				BC5936AF1AC052210015A674 /* Supporting Files */,
+			);
+			path = DaisyTranslateAppHelperTests;
+			sourceTree = "<group>";
+		};
+		BC5936AF1AC052210015A674 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC5936B01AC052210015A674 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC5936971AC052210015A674 /* DaisyTranslateAppHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC5936B51AC052210015A674 /* Build configuration list for PBXNativeTarget "DaisyTranslateAppHelper" */;
+			buildPhases = (
+				BC5936941AC052210015A674 /* Sources */,
+				BC5936951AC052210015A674 /* Frameworks */,
+				BC5936961AC052210015A674 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DaisyTranslateAppHelper;
+			productName = DaisyTranslateAppHelper;
+			productReference = BC5936981AC052210015A674 /* DaisyTranslateAppHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BC5936AA1AC052210015A674 /* DaisyTranslateAppHelperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC5936B81AC052210015A674 /* Build configuration list for PBXNativeTarget "DaisyTranslateAppHelperTests" */;
+			buildPhases = (
+				BC5936A71AC052210015A674 /* Sources */,
+				BC5936A81AC052210015A674 /* Frameworks */,
+				BC5936A91AC052210015A674 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC5936AD1AC052210015A674 /* PBXTargetDependency */,
+			);
+			name = DaisyTranslateAppHelperTests;
+			productName = DaisyTranslateAppHelperTests;
+			productReference = BC5936AB1AC052210015A674 /* DaisyTranslateAppHelperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC5936901AC052210015A674 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Cocoamad;
+				TargetAttributes = {
+					BC5936971AC052210015A674 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					BC5936AA1AC052210015A674 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = BC5936971AC052210015A674;
+					};
+				};
+			};
+			buildConfigurationList = BC5936931AC052210015A674 /* Build configuration list for PBXProject "DaisyTranslateAppHelper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC59368F1AC052210015A674;
+			productRefGroup = BC5936991AC052210015A674 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC5936971AC052210015A674 /* DaisyTranslateAppHelper */,
+				BC5936AA1AC052210015A674 /* DaisyTranslateAppHelperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC5936961AC052210015A674 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC5936A31AC052210015A674 /* Images.xcassets in Resources */,
+				BC5936A61AC052210015A674 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC5936A91AC052210015A674 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC5936941AC052210015A674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC5936A11AC052210015A674 /* main.m in Sources */,
+				BC59369F1AC052210015A674 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC5936A71AC052210015A674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC5936B21AC052210015A674 /* DaisyTranslateAppHelperTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC5936AD1AC052210015A674 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC5936971AC052210015A674 /* DaisyTranslateAppHelper */;
+			targetProxy = BC5936AC1AC052210015A674 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BC5936A41AC052210015A674 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC5936A51AC052210015A674 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC5936B31AC052210015A674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BC5936B41AC052210015A674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BC5936B61AC052210015A674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DaisyTranslateAppHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BC5936B71AC052210015A674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DaisyTranslateAppHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BC5936B91AC052210015A674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DaisyTranslateAppHelperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DaisyTranslateAppHelper.app/Contents/MacOS/DaisyTranslateAppHelper";
+			};
+			name = Debug;
+		};
+		BC5936BA1AC052210015A674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DaisyTranslateAppHelperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DaisyTranslateAppHelper.app/Contents/MacOS/DaisyTranslateAppHelper";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC5936931AC052210015A674 /* Build configuration list for PBXProject "DaisyTranslateAppHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC5936B31AC052210015A674 /* Debug */,
+				BC5936B41AC052210015A674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC5936B51AC052210015A674 /* Build configuration list for PBXNativeTarget "DaisyTranslateAppHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC5936B61AC052210015A674 /* Debug */,
+				BC5936B71AC052210015A674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BC5936B81AC052210015A674 /* Build configuration list for PBXNativeTarget "DaisyTranslateAppHelperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC5936B91AC052210015A674 /* Debug */,
+				BC5936BA1AC052210015A674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC5936901AC052210015A674 /* Project object */;
+}

@@ -12,7 +12,11 @@
 #import "PTHotKey.h"
 #import "AppDelegate.h"
 
+
 @interface AppDelegate (Setting)
 - (void)setRecordRecordController:(SRRecorderControl *)controller WithTag:(NSInteger)tag;
 - (IBAction)changeShowStyle:(id)sender;
+
+- (BOOL)bSupportCopytoPBWhenTranslated;
+- (IBAction)autoLoginWhenStartup:(NSButton *)btn;
 @end
