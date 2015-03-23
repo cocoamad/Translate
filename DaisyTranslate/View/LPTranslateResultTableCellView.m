@@ -28,7 +28,7 @@
     [super drawRect:dirtyRect];
     
     // Drawing code here.
-    [LanChoosePopoverColor setFill];
+    [FootBarBackgroundColor setFill];
     NSRectFill(self.bounds);
 }
 
@@ -50,7 +50,7 @@
     for (LPResultData *data in _result.result) {
         NSString *string = data.dst;
         [resultString appendString: string];
-        
+        debug_log(@"%@", string);
         if (_result.means.symboles.count) {
             [resultString appendString: @"\n"];
             [resultString appendString: @"\n"];
@@ -92,7 +92,10 @@
 {
     NSPasteboard *pb = [NSPasteboard generalPasteboard];
     [pb clearContents];
-    [pb setString: self.resultTextView.string forType: NSStringPboardType];
+    if (_result.result.count) {
+        LPResultData *data = _result.result[0];
+        [pb setString: data.dst forType: NSStringPboardType];
+    }
 }
 
 - (IBAction)playSound:(id)sender

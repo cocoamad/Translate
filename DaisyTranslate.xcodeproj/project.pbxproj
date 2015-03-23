@@ -47,7 +47,6 @@
 		BCC8BFCE1A49B2830048F3B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8BFCD1A49B2830048F3B5 /* main.m */; };
 		BCC8BFD01A49B2830048F3B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC8BFCF1A49B2830048F3B5 /* Images.xcassets */; };
 		BCC8BFD31A49B2830048F3B5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC8BFD11A49B2830048F3B5 /* MainMenu.xib */; };
-		BCC8BFDF1A49B2830048F3B5 /* DaisyTranslateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8BFDE1A49B2830048F3B5 /* DaisyTranslateTests.m */; };
 		BCC8BFE91A49B5ED0048F3B5 /* languages.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCC8BFE81A49B5ED0048F3B5 /* languages.plist */; };
 		BCC8C0051A49B9650048F3B5 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8BFF01A49B9650048F3B5 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BCC8C0061A49B9650048F3B5 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8BFF21A49B9650048F3B5 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -84,16 +83,6 @@
 		BCE2F2F51AAC302C0052B5C8 /* SRSnapback.tiff in Resources */ = {isa = PBXBuildFile; fileRef = BCE2F2EE1AAC302C0052B5C8 /* SRSnapback.tiff */; };
 		BCE2F2F81AAC38C90052B5C8 /* AppDelegate+Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE2F2F71AAC38C90052B5C8 /* AppDelegate+Setting.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BCC8BFD91A49B2830048F3B5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCC8BFBD1A49B2830048F3B5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BCC8BFC41A49B2830048F3B5;
-			remoteInfo = DaisyTranslate;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BCB22A5A1AB4032900939577 /* StatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarView.h; sourceTree = "<group>"; };
@@ -160,7 +149,6 @@
 		BCC8BFCD1A49B2830048F3B5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BCC8BFCF1A49B2830048F3B5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BCC8BFD21A49B2830048F3B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		BCC8BFD81A49B2830048F3B5 /* DaisyTranslateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaisyTranslateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC8BFDD1A49B2830048F3B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCC8BFDE1A49B2830048F3B5 /* DaisyTranslateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaisyTranslateTests.m; sourceTree = "<group>"; };
 		BCC8BFE81A49B5ED0048F3B5 /* languages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = languages.plist; sourceTree = "<group>"; };
@@ -236,13 +224,6 @@
 				BCC8C0131A49B9B40048F3B5 /* libz.1.2.5.dylib in Frameworks */,
 				BCC8C0111A49B9960048F3B5 /* CFNetwork.framework in Frameworks */,
 				BCC8C00F1A49B9870048F3B5 /* SystemConfiguration.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCC8BFD51A49B2830048F3B5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +330,6 @@
 			isa = PBXGroup;
 			children = (
 				BCC8BFC51A49B2830048F3B5 /* aTranslator.app */,
-				BCC8BFD81A49B2830048F3B5 /* DaisyTranslateTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -541,24 +521,6 @@
 			productReference = BCC8BFC51A49B2830048F3B5 /* aTranslator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BCC8BFD71A49B2830048F3B5 /* DaisyTranslateTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BCC8BFE51A49B2830048F3B5 /* Build configuration list for PBXNativeTarget "DaisyTranslateTests" */;
-			buildPhases = (
-				BCC8BFD41A49B2830048F3B5 /* Sources */,
-				BCC8BFD51A49B2830048F3B5 /* Frameworks */,
-				BCC8BFD61A49B2830048F3B5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BCC8BFDA1A49B2830048F3B5 /* PBXTargetDependency */,
-			);
-			name = DaisyTranslateTests;
-			productName = DaisyTranslateTests;
-			productReference = BCC8BFD81A49B2830048F3B5 /* DaisyTranslateTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -570,10 +532,6 @@
 				TargetAttributes = {
 					BCC8BFC41A49B2830048F3B5 = {
 						CreatedOnToolsVersion = 6.1.1;
-					};
-					BCC8BFD71A49B2830048F3B5 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = BCC8BFC41A49B2830048F3B5;
 					};
 				};
 			};
@@ -591,7 +549,6 @@
 			projectRoot = "";
 			targets = (
 				BCC8BFC41A49B2830048F3B5 /* DaisyTranslate */,
-				BCC8BFD71A49B2830048F3B5 /* DaisyTranslateTests */,
 			);
 		};
 /* End PBXProject section */
@@ -629,13 +586,6 @@
 				BCE2F2F21AAC302C0052B5C8 /* SRRemoveShortcut.tif in Resources */,
 				BCE2F2F41AAC302C0052B5C8 /* SRRemoveShortcutRollover.tif in Resources */,
 				BCC804F81A77DC3800BA94EF /* revert.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCC8BFD61A49B2830048F3B5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,23 +643,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BCC8BFD41A49B2830048F3B5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BCC8BFDF1A49B2830048F3B5 /* DaisyTranslateTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BCC8BFDA1A49B2830048F3B5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BCC8BFC41A49B2830048F3B5 /* DaisyTranslate */;
-			targetProxy = BCC8BFD91A49B2830048F3B5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BCC8BFD11A49B2830048F3B5 /* MainMenu.xib */ = {
@@ -748,6 +682,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
+					"__DEBUG__=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -821,42 +756,6 @@
 			};
 			name = Release;
 		};
-		BCC8BFE61A49B2830048F3B5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DaisyTranslateTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DaisyTranslate.app/Contents/MacOS/DaisyTranslate";
-			};
-			name = Debug;
-		};
-		BCC8BFE71A49B2830048F3B5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DaisyTranslateTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DaisyTranslate.app/Contents/MacOS/DaisyTranslate";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -874,15 +773,6 @@
 			buildConfigurations = (
 				BCC8BFE31A49B2830048F3B5 /* Debug */,
 				BCC8BFE41A49B2830048F3B5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BCC8BFE51A49B2830048F3B5 /* Build configuration list for PBXNativeTarget "DaisyTranslateTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BCC8BFE61A49B2830048F3B5 /* Debug */,
-				BCC8BFE71A49B2830048F3B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

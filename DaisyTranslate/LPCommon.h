@@ -67,3 +67,9 @@ NSImage *loadImageByName(NSString *imageName);
 @interface NSImage (Convert2CGImageRef)
 -(CGImageRef)CGImageRef;
 @end
+
+#ifdef __DEBUG__
+#define debug_log(format, ...) NSLog(format, ## __VA_ARGS__)
+#else
+#define debug_log(format, ...)
+#endif

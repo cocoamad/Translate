@@ -100,7 +100,7 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
            NSForegroundColorAttributeName : [NSColor whiteColor]}];
     };
     
-    _hotKeyControl = [[SRRecorderControl alloc] initWithFrame: NSMakeRect(164, 32, 163, 25)];
+    _hotKeyControl = [[SRRecorderControl alloc] initWithFrame: NSMakeRect(164, 35, 163, 25)];
     [self.preferenceWindow.contentView addSubview: _hotKeyControl];
     [self setRecordRecordController: _hotKeyControl WithTag: 0];
     

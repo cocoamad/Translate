@@ -765,6 +765,10 @@
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="STHeitiSC-Light"/>
                         </buttonCell>
+                        <connections>
+                            <binding destination="dlo-YQ-gZ8" name="enabled" keyPath="values" id="eXx-XE-NTE"/>
+                            <binding destination="dlo-YQ-gZ8" name="value" keyPath="values" id="brm-Wj-Xfq"/>
+                        </connections>
                     </button>
                     <button id="aUI-hv-iaA">
                         <rect key="frame" x="52" y="134" width="113" height="18"/>
@@ -792,7 +796,9 @@
                     </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="614" y="-19"/>
+            <point key="canvasLocation" x="383" y="-148"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="dlo-YQ-gZ8"/>
+        <userDefaultsController id="Opp-yA-bcc"/>
     </objects>
 </document>
