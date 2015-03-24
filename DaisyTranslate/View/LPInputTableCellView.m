@@ -61,7 +61,7 @@
         [scrollView setDocumentView: self.inputTextView];
         
         scrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
-        self.inputTextView.placeholderString = @"请输入要翻译的内容";
+        self.inputTextView.placeholderString = NSLocalizedString(@"place", nil);
         [self addSubview: scrollView];
         
         _footViewHide = YES;

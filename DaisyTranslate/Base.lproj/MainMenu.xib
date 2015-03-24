@@ -614,25 +614,6 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="View" id="H8h-7b-M4v">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="View" id="HyV-fh-RgO">
-                        <items>
-                            <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                <connections>
-                                    <action selector="toggleToolbarShown:" target="-1" id="BXY-wc-z0C"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="runToolbarCustomizationPalette:" target="-1" id="pQI-g3-MTW"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
                 <menuItem title="Window" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
@@ -749,7 +730,7 @@
             </view>
             <point key="canvasLocation" x="550.5" y="-237"/>
         </window>
-        <window title="设置" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="uCA-Wc-4i3">
+        <window title="Preference" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="uCA-Wc-4i3">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="416" y="329" width="480" height="176"/>
@@ -759,9 +740,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button id="dHu-Fs-fEU">
-                        <rect key="frame" x="52" y="102" width="191" height="18"/>
+                        <rect key="frame" x="52" y="102" width="297" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="自动将翻译结果保存到剪贴板" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9DX-Fb-OfW">
+                        <buttonCell key="cell" type="check" title="Automatically save the result to pasteboard" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9DX-Fb-OfW">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="STHeitiSC-Light"/>
                         </buttonCell>
@@ -770,9 +751,9 @@
                         </connections>
                     </button>
                     <button id="aUI-hv-iaA">
-                        <rect key="frame" x="52" y="134" width="113" height="18"/>
+                        <rect key="frame" x="52" y="134" width="298" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="开机时自动启动" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="DNU-cd-1rT">
+                        <buttonCell key="cell" type="check" title="Start aTranslator everytime your mac startup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="DNU-cd-1rT">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="STHeitiSC-Light"/>
                         </buttonCell>
@@ -789,9 +770,9 @@
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DgI-Gd-U4v">
-                        <rect key="frame" x="54" y="41" width="95" height="17"/>
+                        <rect key="frame" x="54" y="41" width="91" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="快捷键显示窗口" id="1pu-OR-JY7">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show window" id="1pu-OR-JY7">
                             <font key="font" size="13" name="STHeitiSC-Light"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

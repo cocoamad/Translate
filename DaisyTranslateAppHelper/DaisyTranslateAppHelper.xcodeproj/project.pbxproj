@@ -35,6 +35,8 @@
 		BC5936AB1AC052210015A674 /* DaisyTranslateAppHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaisyTranslateAppHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5936B01AC052210015A674 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC5936B11AC052210015A674 /* DaisyTranslateAppHelperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaisyTranslateAppHelperTests.m; sourceTree = "<group>"; };
+		BCC6D2491AC1B2660047472F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		BCC6D24A1AC1B2820047472F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				BC5936A51AC052210015A674 /* Base */,
+				BCC6D2491AC1B2660047472F /* zh-Hans */,
+				BCC6D24A1AC1B2820047472F /* zh-Hans */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -398,6 +402,7 @@
 				BC5936B71AC052210015A674 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC5936B81AC052210015A674 /* Build configuration list for PBXNativeTarget "DaisyTranslateAppHelperTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +411,7 @@
 				BC5936BA1AC052210015A674 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
