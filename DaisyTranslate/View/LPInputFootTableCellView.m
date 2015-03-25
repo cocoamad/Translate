@@ -65,7 +65,15 @@
         
         self.fromBtn = fromBtn;
         
+        LPMetroButton *translateBtn = [[LPMetroButton alloc] initWithFrame: NSMakeRect(CGRectGetWidth(frameRect) - 100, 11, 80, 25)];
+        [translateBtn addTarget: self Action: @selector(translate:)];
+        translateBtn.title = @"翻译";
+        translateBtn.backgroundColor = [NSColor colorWithCalibratedRed: 74. / 255 green: 104. / 255 blue: 139. / 255 alpha: 1];
+        translateBtn.mouseDownColor = [NSColor colorWithCalibratedRed: 45. / 255 green: 48. / 255 blue: 50./ 255 alpha: 1];
         
+        translateBtn.radius = 4;
+        
+        [self addSubview: translateBtn];
         
         self.toflagView = [[LPCoustomView alloc] initWithFrame: NSMakeRect(NSMaxX(self.fromBtn.frame) + ChooseLanBtnSpacing, (NSHeight(self.frame) - 2) * .5 - 2, 5, 2)DrawBackgroundBlock:^(CGContextRef ctx, NSRect rect) {
             [NSRGBAColor(148, 173, 188, 1) setFill];
