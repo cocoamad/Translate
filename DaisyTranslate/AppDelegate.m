@@ -105,6 +105,7 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
     [self setRecordRecordController: _hotKeyControl WithTag: 0];
     
     [self.tableview reloadData];
+    
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
