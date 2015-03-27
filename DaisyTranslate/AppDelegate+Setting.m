@@ -96,6 +96,7 @@
 - (void)hotKeyResponse:(id)sender
 {
     [self.window makeKeyAndOrderFront: nil];
+    [self.window setLevel: NSStatusWindowLevel];
 }
 
 - (IBAction)changeShowStyle:(NSPopUpButton *)sender;
