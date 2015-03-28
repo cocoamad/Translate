@@ -3,34 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>zh</key>
-	<string>中文</string>
+	<string>Chinese</string>
 	<key>en</key>
-	<string>英语</string>
+	<string>English</string>
 	<key>jp</key>
-	<string>日语</string>
+	<string>Japanese</string>
 	<key>kor</key>
-	<string>韩语</string>
+	<string>Korean</string>
 	<key>it</key>
-	<string>意大利语</string>
+	<string>Italian</string>
 	<key>spa</key>
-	<string>西班牙语</string>
+	<string>Spanish</string>
 	<key>wyw</key>
 	<string>文言文</string>
 	<key>yue</key>
-	<string>粤语</string>
+	<string>Cantonese</string>
 	<key>pt</key>
-	<string>葡萄牙语</string>
+	<string>Portuguese</string>
 	<key>ru</key>
-	<string>俄罗斯语</string>
+	<string>Russian</string>
 	<key>de</key>
-	<string>德语</string>
+	<string>Greek</string>
 	<key>ara</key>
-	<string>阿拉伯语</string>
+	<string>Arabic</string>
 	<key>fra</key>
-	<string>法语</string>
+	<string>French</string>
 	<key>th</key>
-	<string>泰语</string>
+	<string>Thai</string>
 	<key>el</key>
-	<string>希腊语</string>
+	<string>Greek</string>
 </dict>
 </plist>

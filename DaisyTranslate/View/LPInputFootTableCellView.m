@@ -52,12 +52,12 @@
     if (self = [super initWithFrame: frameRect]) {
         
         LPMetroButton *fromBtn = [[LPMetroButton alloc] initWithFrame: NSZeroRect];
-        fromBtn.title = @"英文";
+        fromBtn.title = NSLocalizedString(@"English", nil) ;
         fromBtn.object = [[LPCommon shareCommon] languageByKey: @"en"];
         fromBtn.mouseDownColor = nil;
         fromBtn.titleFont = [NSFont systemFontOfSize: ChooseLanFontSize];
         fromBtn.tag = 1;
-        NSSize size = [self sizeOfTitle: @"英文"];
+        NSSize size = [self sizeOfTitle: NSLocalizedString(@"English", nil)];
         [fromBtn setFrame: NSMakeRect(ChooseLanLeftMargin, (NSHeight(self.bounds) - size.height) * .5, size.width, size.height)];
         [fromBtn addTarget: self Action: @selector(lanChooseClick:)];
         fromBtn.titleColor = [NSColor colorWithCalibratedRed: 73. / 255 green: 143. / 255 blue: 203. / 255 alpha: 1];
@@ -67,7 +67,7 @@
         
         LPMetroButton *translateBtn = [[LPMetroButton alloc] initWithFrame: NSMakeRect(CGRectGetWidth(frameRect) - 100, 11, 80, 25)];
         [translateBtn addTarget: self Action: @selector(translate:)];
-        translateBtn.title = @"翻译";
+        translateBtn.title = NSLocalizedString(@"Translate", nil) ;
         translateBtn.backgroundColor = [NSColor colorWithCalibratedRed: 74. / 255 green: 104. / 255 blue: 139. / 255 alpha: 1];
         translateBtn.mouseDownColor = [NSColor colorWithCalibratedRed: 45. / 255 green: 48. / 255 blue: 50./ 255 alpha: 1];
         
@@ -85,9 +85,9 @@
         LPMetroButton *toBtn = [[LPMetroButton alloc] initWithFrame: NSZeroRect];
         toBtn.tag = 2;
         toBtn.mouseDownColor = nil;
-        toBtn.title = @"中文";
+        toBtn.title = NSLocalizedString(@"Chinese", nil);
         toBtn.object = [[LPCommon shareCommon] languageByKey: @"zh"];
-        size = [self sizeOfTitle: @"中文"];
+        size = [self sizeOfTitle: NSLocalizedString(@"Chinese", nil)];
         [toBtn setFrame: NSMakeRect(NSMaxX(self.toflagView.frame) + ChooseLanBtnSpacing, (NSHeight(self.bounds) - size.height) * .5, size.width, size.height)];
         toBtn.titleFont = [NSFont systemFontOfSize: ChooseLanFontSize];
         [toBtn addTarget: self Action: @selector(lanChooseClick:)];

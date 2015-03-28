@@ -18,6 +18,10 @@
     [self.resultTextView setBackgroundColor: FootBarBackgroundColor];
     self.resultTextView.textColor = [NSColor whiteColor];
     self.resultTextView.font = [NSFont systemFontOfSize: 14];
+    
+//    NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
+//    [myStyle setLineSpacing: 3];
+//    [self.resultTextView setDefaultParagraphStyle:myStyle];
 }
 
 - (void)setProgress:(CGFloat)precent

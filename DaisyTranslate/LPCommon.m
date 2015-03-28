@@ -87,7 +87,7 @@
         for (NSString *key in _lanDict) {
             LPLanaguageObject *object = [[LPLanaguageObject alloc] init];
             object.key = key;
-            object.name = _lanDict[key];
+            object.name = NSLocalizedString(_lanDict[key], nil);
             [_lans addObject: object];
         }
         [_lans sortUsingComparator:^NSComparisonResult(LPLanaguageObject * obj1, LPLanaguageObject * obj2) {

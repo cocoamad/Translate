@@ -14,6 +14,7 @@
 		BCB22A601AB404E800939577 /* status_icon_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB22A5E1AB404E800939577 /* status_icon_normal.png */; };
 		BCC6D24E1AC1B35D0047472F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCC6D2501AC1B35D0047472F /* Localizable.strings */; };
 		BCC6D25D1AC453310047472F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BCC6D25C1AC453310047472F /* Credits.rtf */; };
+		BCC6D2651AC586580047472F /* NPReceiptVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6D2641AC586580047472F /* NPReceiptVerification.m */; };
 		BCC804121A62599400BA94EF /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = BCC804111A62599400BA94EF /* icon.icns */; };
 		BCC804501A6B7D3F00BA94EF /* LPCoustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8044F1A6B7D3F00BA94EF /* LPCoustomView.m */; };
 		BCC804701A6BB1AA00BA94EF /* NSTextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC8046F1A6BB1AA00BA94EF /* NSTextView+Placeholder.m */; };
@@ -129,6 +130,8 @@
 		BCC6D24F1AC1B35D0047472F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BCC6D2511AC1B3610047472F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BCC6D25C1AC453310047472F /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		BCC6D2631AC586580047472F /* NPReceiptVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPReceiptVerification.h; sourceTree = "<group>"; };
+		BCC6D2641AC586580047472F /* NPReceiptVerification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPReceiptVerification.m; sourceTree = "<group>"; };
 		BCC804111A62599400BA94EF /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		BCC8044E1A6B7D3F00BA94EF /* LPCoustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LPCoustomView.h; path = ../LPCoustomView.h; sourceTree = "<group>"; };
 		BCC8044F1A6B7D3F00BA94EF /* LPCoustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LPCoustomView.m; path = ../LPCoustomView.m; sourceTree = "<group>"; };
@@ -278,6 +281,15 @@
 				BC5936C31AC052230015A674 /* DaisyTranslateAppHelperTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BCC6D2621AC586580047472F /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				BCC6D2631AC586580047472F /* NPReceiptVerification.h */,
+				BCC6D2641AC586580047472F /* NPReceiptVerification.m */,
+			);
+			path = Receipt;
 			sourceTree = "<group>";
 		};
 		BCC804161A62BECC00BA94EF /* Image */ = {
@@ -446,6 +458,7 @@
 		BCC8BFEA1A49B9650048F3B5 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				BCC6D2621AC586580047472F /* Receipt */,
 				BCD169511A7DE73900DA9417 /* shotcutRecorder */,
 				BCC804D81A748D6C00BA94EF /* INPopoverController */,
 				BCC804711A6BC52500BA94EF /* INAppStoreWindow */,
@@ -692,6 +705,7 @@
 				BCD169751A7DE73900DA9417 /* SRValidator.m in Sources */,
 				BCC8C01D1A49BC1E0048F3B5 /* LPTranslateService.m in Sources */,
 				BCC8BFCE1A49B2830048F3B5 /* main.m in Sources */,
+				BCC6D2651AC586580047472F /* NPReceiptVerification.m in Sources */,
 				BCC8C00B1A49B9650048F3B5 /* ASINetworkQueue.m in Sources */,
 				BCD1696A1A7DE73900DA9417 /* PTHotKey+ShortcutRecorder.m in Sources */,
 				BCD169731A7DE73900DA9417 /* SRRecorderCell.m in Sources */,

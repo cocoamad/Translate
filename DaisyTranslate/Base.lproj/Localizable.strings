@@ -1,1 +1,19 @@
-"place" = "Please input a world or a sentence";
+"place" = "Please input what you want to translate";
+
+"French" = "French";
+"Cantonese" = "Cantonese";
+"Korean" = "Korean";
+"Japanese" = "Japanese";
+"Chinese" = "Chinese";
+"English" = "English";
+"Thai" = "Thai";
+"German" = "German";
+"Greek" = "Greek";
+"Spanish" = "Spanish";
+"Italian" = "Italian";
+"Russian" = "Russian";
+"Portuguese" = "Portuguese";
+"Arabic" = "Arabic";
+"文言文" = "文言文";
+
+"Translate" = "Translate";

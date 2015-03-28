@@ -95,8 +95,9 @@
 
 - (void)hotKeyResponse:(id)sender
 {
+    [[NSApplication sharedApplication] activateIgnoringOtherApps : YES];
     [self.window makeKeyAndOrderFront: nil];
-    [self.window setLevel: NSStatusWindowLevel];
+    
 }
 
 - (IBAction)changeShowStyle:(NSPopUpButton *)sender;
