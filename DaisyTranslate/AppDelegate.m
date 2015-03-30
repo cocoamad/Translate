@@ -82,6 +82,16 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
     
     self.window.titleBarHeight = TitleBarHeight;
     self.window.title = @"aTranslator";
+    NSButton *setBtn = [[NSButton alloc] initWithFrame: NSMakeRect(NSWidth(self.window.frame) - 25, 5, 18, 18)];
+    [setBtn setBordered: NO];
+    [setBtn setBezelStyle: NSShadowlessSquareBezelStyle];
+    [setBtn setButtonType: NSMomentaryChangeButton];
+    [setBtn setImage: [NSImage imageNamed: @"setting"]];
+    [setBtn setAlternateImage: [NSImage imageNamed: @"setting_hi"]];
+    [setBtn setTarget: self];
+    [setBtn setAction: @selector(showSettingMenu:)];
+    [self.window.titleBarView addSubview: setBtn];
+    
     self.window.titleBarDrawingBlock = ^(BOOL drawsAsMainWindow, CGRect drawingRect,
                                          CGRectEdge edge, CGPathRef clippingPath)
     {
@@ -106,6 +116,7 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
     
     [self.tableview reloadData];
     
+    [self initSettingMenu];
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag

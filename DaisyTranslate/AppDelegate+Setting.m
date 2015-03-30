@@ -161,4 +161,72 @@
         }
     }
 }
+
+#pragma makr -
+- (void)initSettingMenu;
+{
+    _settingMenu = [[NSMenu allocWithZone: [NSMenu menuZone]] initWithTitle: @"menu"];
+    
+    NSMenuItem *newItem = [[NSMenuItem allocWithZone: [NSMenu menuZone]] initWithTitle: NSLocalizedString(@"Preferences", nil) action: @selector(showPreference) keyEquivalent: @","];
+    [newItem setTarget: self];
+    [newItem setEnabled: YES];
+    [_settingMenu addItem: newItem];
+    
+    [_settingMenu addItem: [NSMenuItem separatorItem]];
+    
+    newItem = [[NSMenuItem allocWithZone: [NSMenu menuZone]] initWithTitle: NSLocalizedString(@"Support", nil) action: @selector(showSupport) keyEquivalent: @""];
+    [newItem setTarget: self];
+    [newItem setEnabled: YES];
+    [_settingMenu addItem: newItem];
+    
+    [_settingMenu addItem: [NSMenuItem separatorItem]];
+    
+    newItem = [[NSMenuItem allocWithZone: [NSMenu menuZone]] initWithTitle: NSLocalizedString(@"Quit aTranslator", nil) action: @selector(quit) keyEquivalent: @"q"];
+    [newItem setTarget: self];
+    [newItem setEnabled: YES];
+    [_settingMenu addItem: newItem];
+}
+
+- (void)showSettingMenu:(id)sender
+{
+    [_settingMenu popUpMenuPositioningItem: nil atLocation: [sender frame].origin inView: self.window.titleBarView];
+}
+
+- (void)showSupport
+{
+    NSString *shortVersion = [NSString stringWithFormat:@"%@",[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleVersion"]];
+    NSString *bundleVersion = [NSString stringWithFormat:@"%@",[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"]];
+    NSString *version = [NSString stringWithFormat: @"aTranslator V%@(%@)", bundleVersion,shortVersion];
+    
+    NSString *subject = [NSString stringWithFormat: @"%@ Bug Report & Feature Requests", version];
+    NSMutableString *body = [NSMutableString stringWithString:@"If you have any new and cool features in your mind, please feel free drop us a line, we'll try our best to make aTranslator Better!\n\n \
+Please send us the following information:\n \
+- What you were doing when the issue happened\n \
+- Whether you were able to replicate it\n \
+- Include any screenshots that might help us\n\n\n\n"];
+    [body replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:0 range:NSMakeRange(0, [body length])];
+    NSString *address = @"cocoamad@gmail.com";
+    NSAppleScript *mailScript;
+    NSString *scriptString= [NSString stringWithFormat:
+                             @"tell application \"Mail\" \n  set theNewMessage to make new outgoing message with properties {subject:\"%@\", content:\"%@\", visible:true} \n  \
+                             tell theNewMessage \n    \
+                             set visibile to true\n    \
+                             make new to recipient at end of to recipients with properties {address:\"%@\"}\n   \
+                             end tell\n\
+                             activate\n  \
+                             end tell",subject, body, address];
+    
+    
+    NSDictionary *error = nil;
+    mailScript = [[NSAppleScript alloc] initWithSource:scriptString];
+    [mailScript executeAndReturnError: &error];
+    if (error) {
+        NSLog(@"%@", [error description]);
+    }
+}
+
+- (void)quit
+{
+    [[NSApplication sharedApplication] terminate: nil];
+}
 @end

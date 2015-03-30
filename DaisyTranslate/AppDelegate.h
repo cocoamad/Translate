@@ -18,7 +18,8 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate, StatusBarViewDelegate>
 {
-     PTHotKey *_hotKey;
+    PTHotKey *_hotKey;
+    NSMenu *_settingMenu;
 }
 @property (weak) IBOutlet INAppStoreWindow *window;
 @property (assign) IBOutlet LPCoustomView *titleBarView;

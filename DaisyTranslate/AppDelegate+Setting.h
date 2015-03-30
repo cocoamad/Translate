@@ -19,4 +19,7 @@
 
 - (BOOL)bSupportCopytoPBWhenTranslated;
 - (IBAction)autoLoginWhenStartup:(NSButton *)btn;
+
+- (void)initSettingMenu;
+- (void)showSettingMenu:(id)sender;
 @end

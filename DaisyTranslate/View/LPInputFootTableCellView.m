@@ -65,7 +65,7 @@
         
         self.fromBtn = fromBtn;
         
-        LPMetroButton *translateBtn = [[LPMetroButton alloc] initWithFrame: NSMakeRect(CGRectGetWidth(frameRect) - 100, 11, 80, 25)];
+        LPMetroButton *translateBtn = [[LPMetroButton alloc] initWithFrame: NSMakeRect(CGRectGetWidth(frameRect) - 115, 9, 100, 30)];
         [translateBtn addTarget: self Action: @selector(translate:)];
         translateBtn.title = NSLocalizedString(@"Translate", nil) ;
         translateBtn.backgroundColor = [NSColor colorWithCalibratedRed: 74. / 255 green: 104. / 255 blue: 139. / 255 alpha: 1];

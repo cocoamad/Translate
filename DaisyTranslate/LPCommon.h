@@ -23,7 +23,7 @@ typedef enum {
 #define InputCellMaxHeight 300
 
 #define InPutFootCellHeight 50
-#define TitleBarHeight 25
+#define TitleBarHeight 28
 #define ResultCellExtraInset  NSEdgeInsetsMake(0, 10, 30, 10)
 
 #define ResultCellMaxHeight 300

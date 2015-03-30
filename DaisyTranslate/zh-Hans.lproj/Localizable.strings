@@ -1,5 +1,4 @@
 "place" = "请输入要翻译的内容";
-
 "French" = "法语";
 "Cantonese" = "粤语";
 "Korean" = "韩语";
@@ -15,4 +14,8 @@
 "Portuguese" = "葡萄牙语";
 "Arabic" = "阿拉伯语";
 "文言文" = "文言文";
-"Translate" = "翻译"
+"Translate" = "翻译";
+
+"Support" = "帮助与反馈";
+"Preferences" = "设置";
+"Quit aTranslator" = "退出";
