@@ -159,7 +159,7 @@ static NSString *lock = @"lock";
 {
     if (_audioCachePath == nil) {
         NSString *userInfoPath = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) lastObject];
-        _audioCachePath = [userInfoPath stringByAppendingFormat:@"/DaisyTranslate/%@", @"Audio"];
+        _audioCachePath = [userInfoPath stringByAppendingFormat:@"/aTranslator/%@", @"Audio"];
         if ([[NSFileManager defaultManager] fileExistsAtPath: _audioCachePath]) {
             return _audioCachePath;
         } else {

@@ -113,7 +113,22 @@
     NSString *translateString = [[_result.result lastObject] dst];
     if (translateString.length) {
         [delegate playSound: translateString to: _result.to];
+        self.playSoundBtn.stop = YES;
     }
 
 }
+@end
+
+@implementation SoundButton
+
+- (void)setStop:(BOOL)stop
+{
+    _stop = stop;
+    if (_stop) {
+        [self setImage: [NSImage imageNamed: @"voice"]];
+    } else {
+        [self setImage: [NSImage imageNamed: @"voiceing"]];
+    }
+}
+
 @end

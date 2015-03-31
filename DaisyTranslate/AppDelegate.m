@@ -216,7 +216,6 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
 - (void)footViewWillShow:(LPInputTableCellView *)view
 {
     @synchronized(tableCellLock) {
-        NSLog(@"123 %ld", _tableview.numberOfRows);
         if (_tableview.numberOfRows == 2) {
             [_tableview noteHeightOfRowsWithIndexesChanged: [NSIndexSet indexSetWithIndex: 1]];
         } else {
@@ -300,7 +299,11 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
 
 - (void)playSound:(NSString *)string to:(NSString *)to
 {
-    [self.service translateString2voice: string from: to speed: 2];
+    if (self.playSound.isPlaying) {
+        [self.playSound stop];
+    } else {
+        [self.service translateString2voice: string from: to speed: 2];
+    }
 }
 
 - (IBAction)openPerfrence:(id)sender
@@ -469,15 +472,31 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
 {
     if (self.playSound) {
         [self.playSound stop];
+        self.playSound.delegate = nil;
         self.playSound = nil;
     }
     self.playSound = [[NSSound alloc] initWithContentsOfFile: audioPath byReference: NO];
+    self.playSound.delegate = self;
     [self.playSound play];
+    
+    LPTranslateResultTableCellView *cell = [self.tableview viewAtColumn: 0 row: 2 makeIfNecessary: YES];
+    if (cell) {
+        cell.playSoundBtn.stop = NO;
+    }
 }
 
 - (void)translateString2voiceFailed:(NSError *)error source:(NSString *)string
 {
     NSLog(@"play sound failed %@ source:%@", [error description], string);
+}
+
+#pragma mark -
+- (void)sound:(NSSound *)sound didFinishPlaying:(BOOL)aBool
+{
+    LPTranslateResultTableCellView *cell = [self.tableview viewAtColumn: 0 row: 2 makeIfNecessary: YES];
+    if (cell) {
+        cell.playSoundBtn.stop = YES;
+    }
 }
 
 @end

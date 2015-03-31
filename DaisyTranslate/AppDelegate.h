@@ -16,7 +16,7 @@
 @interface MainWindow : NSWindow
 @end
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate, StatusBarViewDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate, StatusBarViewDelegate, NSSoundDelegate>
 {
     PTHotKey *_hotKey;
     NSMenu *_settingMenu;

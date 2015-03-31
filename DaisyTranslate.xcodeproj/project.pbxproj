@@ -90,6 +90,8 @@
 		BCE5C34E1AC98C7300FFA60C /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE5C34D1AC98C7300FFA60C /* setting@2x.png */; };
 		BCE5C3511AC98D3600FFA60C /* setting_hi.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE5C34F1AC98D3600FFA60C /* setting_hi.png */; };
 		BCE5C3521AC98D3600FFA60C /* setting_hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE5C3501AC98D3600FFA60C /* setting_hi@2x.png */; };
+		BCE5C3551ACAE46600FFA60C /* voiceing.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE5C3531ACAE46600FFA60C /* voiceing.png */; };
+		BCE5C3561ACAE46600FFA60C /* voiceing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE5C3541ACAE46600FFA60C /* voiceing@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,6 +264,8 @@
 		BCE5C34D1AC98C7300FFA60C /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
 		BCE5C34F1AC98D3600FFA60C /* setting_hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_hi.png; sourceTree = "<group>"; };
 		BCE5C3501AC98D3600FFA60C /* setting_hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_hi@2x.png"; sourceTree = "<group>"; };
+		BCE5C3531ACAE46600FFA60C /* voiceing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voiceing.png; sourceTree = "<group>"; };
+		BCE5C3541ACAE46600FFA60C /* voiceing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voiceing@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +302,8 @@
 		BCC804161A62BECC00BA94EF /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				BCE5C3531ACAE46600FFA60C /* voiceing.png */,
+				BCE5C3541ACAE46600FFA60C /* voiceing@2x.png */,
 				BCB22A5D1AB404E800939577 /* status_icon_hi.png */,
 				BCB22A5E1AB404E800939577 /* status_icon_normal.png */,
 				BCC804FA1A7923CF00BA94EF /* clear.png */,
@@ -657,6 +663,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE5C3561ACAE46600FFA60C /* voiceing@2x.png in Resources */,
 				BCE2F2F51AAC302C0052B5C8 /* SRSnapback.tiff in Resources */,
 				BCC804EA1A77D1C200BA94EF /* copy_press.png in Resources */,
 				BCE2F2F31AAC302C0052B5C8 /* SRRemoveShortcutPressed.tif in Resources */,
@@ -682,6 +689,7 @@
 				BCC804F41A77D33600BA94EF /* voice.png in Resources */,
 				BCC804EB1A77D1C200BA94EF /* copy_press@2x.png in Resources */,
 				BCE5C3521AC98D3600FFA60C /* setting_hi@2x.png in Resources */,
+				BCE5C3551ACAE46600FFA60C /* voiceing.png in Resources */,
 				BCC6D24E1AC1B35D0047472F /* Localizable.strings in Resources */,
 				BCC804ED1A77D1C200BA94EF /* copy@2x.png in Resources */,
 				BCC8BFD31A49B2830048F3B5 /* MainMenu.xib in Resources */,
