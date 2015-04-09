@@ -198,12 +198,12 @@
     NSString *bundleVersion = [NSString stringWithFormat:@"%@",[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"]];
     NSString *version = [NSString stringWithFormat: @"aTranslator V%@(%@)", bundleVersion,shortVersion];
     
-    NSString *subject = [NSString stringWithFormat: @"%@ Bug Report & Feature Requests", version];
-    NSMutableString *body = [NSMutableString stringWithString:@"If you have any new and cool features in your mind, please feel free drop us a line, we'll try our best to make aTranslator Better!\n\n \
-Please send us the following information:\n \
-- What you were doing when the issue happened\n \
-- Whether you were able to replicate it\n \
-- Include any screenshots that might help us\n\n\n\n"];
+    NSString *subject = [NSString stringWithFormat: @"%@ %@", version , NSLocalizedString(@"Bug Report & Feature Requests", nil)];
+    NSMutableString *body = [NSMutableString stringWithFormat:@"%@\n\n \
+%@\n \
+%@\n \
+%@\n \
+%@\n\n\n\n", NSLocalizedString(@"Support Contet", nil), NSLocalizedString(@"Please send us the following information:", nil), NSLocalizedString(@"- What you were doing when the issue happened", nil), NSLocalizedString( @"- Whether you were able to replicate it", nil), NSLocalizedString( @"- Include any screenshots that might help us", nil)];
     [body replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:0 range:NSMakeRange(0, [body length])];
     NSString *address = @"cocoamad@gmail.com";
     NSAppleScript *mailScript;
@@ -221,7 +221,6 @@ Please send us the following information:\n \
     mailScript = [[NSAppleScript alloc] initWithSource:scriptString];
     [mailScript executeAndReturnError: &error];
     if (error) {
-        NSLog(@"%@", [error description]);
     }
 }
 

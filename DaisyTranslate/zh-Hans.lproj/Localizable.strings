@@ -19,3 +19,9 @@
 "Support" = "帮助与反馈";
 "Preferences" = "设置";
 "Quit aTranslator" = "退出";
+"Bug Report & Feature Requests" = "意见与反馈";
+"Support Contet" = "如果你遇到问题或者对我有什么建议，请在下面告诉我，我将在第一的时间响应你。";
+"Please send us the following information:" = "请告诉我如下信息：";
+"- What you were doing when the issue happened" = "- 什么操作会导致发生错误？";
+"- Whether you were able to replicate it" = "- 是否能够重现此错误？";
+"- Include any screenshots that might help us" = "- 如果有截图的话那就最好的了";

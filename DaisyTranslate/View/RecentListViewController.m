@@ -101,7 +101,7 @@
         LanItem *item = [[LanItem alloc] init];
         item.lanObj = object;
         item.index = i;
-        item.frame = NSMakeRect(ContentMargin.left + (i % 3) * ItemSize.width, ContentMargin.top + (i / 3) * ItemSize.height, ItemSize.width, ItemSize.height);
+        item.frame = NSMakeRect(ContentMargin.left + (i % 3) * ItemSize.width, NSHeight(self.frame) - (ContentMargin.top + (i / 3) * ItemSize.height) - ContentMargin.bottom, ItemSize.width, ItemSize.height);
         [_items addObject: item];
     }
     

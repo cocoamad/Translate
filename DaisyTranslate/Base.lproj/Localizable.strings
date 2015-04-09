@@ -19,3 +19,10 @@
 "Support" = "Support and Help";
 "Preferences" = "Preferences";
 "Quit aTranslator" = "Quit aTranslator";
+"Bug Report & Feature Requests" = "Bug Report & Feature Requests";
+"Support Contet" = "If you have any new and cool features in your mind, please feel free drop us a line, we'll try our best to make aTranslator Better!";
+
+"Please send us the following information:" = "Please send us the following information:";
+"- What you were doing when the issue happened" = "- What you were doing when the issue happened";
+"- Whether you were able to replicate it" = "- Whether you were able to replicate it";
+"- Include any screenshots that might help us" = "- Include any screenshots that might help us";

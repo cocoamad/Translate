@@ -18,7 +18,7 @@ typedef void (^SelectedRowAtIndexBlock)(NSInteger row);
 #define KeySpace 49
 #define KeyESC 53
 
-#define ContentMargin NSEdgeInsetsMake(10,15,10,10)
+#define ContentMargin NSEdgeInsetsMake(10,15,20,10)
 #define ItemSize      NSMakeSize(80,20)
 @class ContainerView;
 @protocol ContainerViewDelegate <NSObject>

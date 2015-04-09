@@ -37,6 +37,7 @@
 		BC5936B11AC052210015A674 /* DaisyTranslateAppHelperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaisyTranslateAppHelperTests.m; sourceTree = "<group>"; };
 		BCC6D2491AC1B2660047472F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		BCC6D24A1AC1B2820047472F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		BCE5C3581ACFAE6B00FFA60C /* DaisyTranslateAppHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DaisyTranslateAppHelper.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 		BC59369A1AC052210015A674 /* DaisyTranslateAppHelper */ = {
 			isa = PBXGroup;
 			children = (
+				BCE5C3581ACFAE6B00FFA60C /* DaisyTranslateAppHelper.entitlements */,
 				BC59369D1AC052210015A674 /* AppDelegate.h */,
 				BC59369E1AC052210015A674 /* AppDelegate.m */,
 				BC5936A21AC052210015A674 /* Images.xcassets */,
@@ -162,6 +164,11 @@
 				TargetAttributes = {
 					BC5936971AC052210015A674 = {
 						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					BC5936AA1AC052210015A674 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -329,10 +336,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DaisyTranslateAppHelper/DaisyTranslateAppHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DaisyTranslateAppHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DaisyTranslateAppHelper;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -340,10 +350,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DaisyTranslateAppHelper/DaisyTranslateAppHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DaisyTranslateAppHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DaisyTranslateAppHelper;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
