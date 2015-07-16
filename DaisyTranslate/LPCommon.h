@@ -52,6 +52,8 @@ CGPathRef createRoundRectPathInRect(CGRect rect, CGFloat radius);
     NSDictionary *_lanDict;
     NSMutableArray *_lans;
 }
+@property (nonatomic, strong) LPLanaguageObject *fromLan;
+@property (nonatomic, strong) LPLanaguageObject *toLan;
 + (instancetype)shareCommon;
 - (CGFloat)heightOfTranslateResult:(LPTranslateResult *)result width:(CGFloat)width;
 

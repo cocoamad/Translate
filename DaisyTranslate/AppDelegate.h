@@ -29,10 +29,11 @@
 @property (nonatomic, assign) IBOutlet NSWindow *preferenceWindow;
 @property (nonatomic, strong) SRRecorderControl *hotKeyControl;
 @property (nonatomic, strong) StatusBarView *statusBar;
-
+@property (nonatomic, assign) IBOutlet NSMenuItem *showMainWindowItem;
 @property (nonatomic ,assign) BOOL   hasActivePanel;
 
 - (void)playSound:(NSString *)string to:(NSString *)to;
 - (IBAction)openPerfrence:(id)sender;
+- (IBAction)menuShowMainWindow:(id)sender;
 @end
 

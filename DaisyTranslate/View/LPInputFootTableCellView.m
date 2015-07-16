@@ -137,7 +137,7 @@
     }
     __weak LPInputFootTableCellView *weakCell = self;
     RecentListViewController *vc = (RecentListViewController *)self.lanPopover.contentViewController;
-
+    vc.isFromPop = (btn.tag == 1);
     vc.selectedLanBlock = ^(LPLanaguageObject *lan){
         if (btn.tag == 1) {
             [self resetFromLanguage: lan ToLanguage: nil];
@@ -158,6 +158,12 @@
 
 }
 
+- (void)popoverWillShow:(INPopoverController *)popover;
+{
+    RecentListViewController *vc = (RecentListViewController *)self.lanPopover.contentViewController;
+    [vc layoutItem];
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     CGContextRef ctx = [NSGraphicsContext currentContext].graphicsPort;
@@ -175,7 +181,7 @@
         NSRect fromBtnRect = self.fromBtn.frame;
         fromBtnRect = NSMakeRect(NSMinX(fromBtnRect), NSMinY(fromBtnRect),size.width, size.height);
         self.fromBtn.frame = fromBtnRect;
-        
+        [LPCommon shareCommon].fromLan = from;
         self.toflagView.frame = NSMakeRect(NSMaxX(self.fromBtn.frame) + 5, (NSHeight(self.frame) - 2) * .5 - 2, 5, 2);
     }
     
@@ -186,6 +192,7 @@
         NSSize size = [self sizeOfTitle: to.name];
         toBtnFrame.origin.x = NSMaxX(self.toflagView.frame) + ChooseLanBtnSpacing;
         toBtnFrame.size = size;
+        [LPCommon shareCommon].toLan = to;
         [self.toBtn setFrame: toBtnFrame];
     } else {
         NSRect toBtnFrame = self.toBtn.frame;

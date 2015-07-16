@@ -30,6 +30,11 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
 @property (nonatomic, assign) CGFloat resultHeight;
 @property (nonatomic, assign) CGFloat inputCellHeight;
 
+
+@property (nonatomic, strong) LPInputTableCellView *inputCell;
+@property (nonatomic, strong) LPInputFootTableCellView *footCell;
+@property (nonatomic, strong) LPTranslateResultTableCellView *resultCell;
+
 @end
 
 @interface MyScrollView : NSScrollView
@@ -117,6 +122,7 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
     [self.tableview reloadData];
     
     [self initSettingMenu];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(windowWillClose:) name: NSWindowWillCloseNotification object: nil];
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
@@ -124,8 +130,28 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
     if (!flag){
         [_window makeKeyAndOrderFront: nil];
     }
-    
     return YES;
+}
+
+- (IBAction)menuShowMainWindow:(id)sender
+{
+    [self.showMainWindowItem setHidden: YES];
+    [self.window makeKeyAndOrderFront: nil];
+}
+
+-(void)windowWillClose:(NSNotification *)notification
+{
+    if ([[notification object] isEqual: self.window]) {
+        [self updateWindowMenuStatus: YES];
+    }
+}
+
+-(void)updateWindowMenuStatus:(BOOL)bShow
+{
+    if (bShow)
+        [self.showMainWindowItem setHidden: NO];
+    else
+        [self.showMainWindowItem setHidden: YES];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -138,40 +164,40 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
 {
     if (row == kRowInput) {
         static NSString *inputcell = @"inputcell";
-        LPInputTableCellView *cell = [tableView makeViewWithIdentifier: inputcell owner: self];
-        if (cell == nil) {
-            cell = [[LPInputTableCellView alloc] initWithFrame: NSMakeRect(0, 0, NSWidth(tableView.frame), [self heightOfRow: row])];
-            cell.delegate = self;
-            cell.identifier = inputcell;
+        self.inputCell = [tableView makeViewWithIdentifier: inputcell owner: self];
+        if (self.inputCell == nil) {
+            self.inputCell = [[LPInputTableCellView alloc] initWithFrame: NSMakeRect(0, 0, NSWidth(tableView.frame), [self heightOfRow: row])];
+            self.inputCell.delegate = self;
+            self.inputCell.identifier = inputcell;
         }
-        [self.window makeFirstResponder: cell.inputTextView];
-        return cell;
+        [self.window makeFirstResponder: self.inputCell.inputTextView];
+        return self.inputCell;
     } else if (row == kRowFoot) {
         static NSString *footcell = @"footcell";
-        LPInputFootTableCellView *cell = [tableView makeViewWithIdentifier: footcell owner: self];
-        if (cell == nil) {
-            cell = [[LPInputFootTableCellView alloc] initWithFrame: NSMakeRect(0, 0, NSWidth(tableView.frame), [self heightOfRow: row])];
-            cell.delegate = self;
-            cell.identifier = footcell;
+        self.footCell = [tableView makeViewWithIdentifier: footcell owner: self];
+        if (self.footCell == nil) {
+            self.footCell = [[LPInputFootTableCellView alloc] initWithFrame: NSMakeRect(0, 0, NSWidth(tableView.frame), [self heightOfRow: row])];
+            self.footCell.delegate = self;
+            self.footCell.identifier = footcell;
         }
-        return cell;
+        return self.footCell;
     } else if (row == kRowResult) {
         static NSString *resultCell = @"resultcell";
-        LPTranslateResultTableCellView *cell = [tableView makeViewWithIdentifier: resultCell owner: self];
-        if (cell == nil) {
+        self.resultCell = [tableView makeViewWithIdentifier: resultCell owner: self];
+        if (self.resultCell == nil) {
             NSArray *views = nil;
             BOOL success = [[NSBundle mainBundle] loadNibNamed: @"LPTranslateResultTableCellView" owner: self topLevelObjects: &views];
             if (success && views.count) {
                 for(NSView *view in views) {
                     if ([view isKindOfClass: [LPTranslateResultTableCellView class]]) {
-                        cell = (LPTranslateResultTableCellView *)view;
-                        cell.identifier = resultCell;
+                        self.resultCell = (LPTranslateResultTableCellView *)view;
+                        self.resultCell.identifier = resultCell;
                         break;
                     }
                 }
             }
         }
-        return cell;
+        return self.resultCell;
     }
     return nil;
 }
@@ -215,13 +241,11 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
 #pragma mark Cell Delegate
 - (void)footViewWillShow:(LPInputTableCellView *)view
 {
-    @synchronized(tableCellLock) {
-        if (_tableview.numberOfRows == 2) {
-            [_tableview noteHeightOfRowsWithIndexesChanged: [NSIndexSet indexSetWithIndex: 1]];
-        } else {
-            [_tableview insertRowsAtIndexes: [NSIndexSet indexSetWithIndex: 1] withAnimation: NSTableViewAnimationEffectNone];
-            _numberOfRow = 2;
-        }
+    if (_tableview.numberOfRows == 2) {
+        [_tableview noteHeightOfRowsWithIndexesChanged: [NSIndexSet indexSetWithIndex: 1]];
+    } else {
+        [_tableview insertRowsAtIndexes: [NSIndexSet indexSetWithIndex: 1] withAnimation: NSTableViewAnimationEffectNone];
+        _numberOfRow = 2;
     }
     [self doWindowAniamtion: 2 animation: YES completeBlock:^{
         
@@ -235,12 +259,10 @@ LPInputFootTableCellViewDelegate, LPTranslateServiceDelegate, NSPopoverDelegate>
     
     [self doWindowAniamtion: 1 animation: YES completeBlock:^{
 
-        @synchronized(tableCellLock) {
-            NSInteger row = MAX(1, [_tableview numberOfRows]);
-            NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange: NSMakeRange(1, row - 1)];
-            [_tableview removeRowsAtIndexes: indexSet withAnimation: NSTableViewAnimationEffectNone];
-            _numberOfRow = 1;
-        }
+        NSInteger row = MAX(1, [_tableview numberOfRows]);
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange: NSMakeRange(1, row - 1)];
+        [_tableview removeRowsAtIndexes: indexSet withAnimation: NSTableViewAnimationEffectNone];
+        _numberOfRow = 1;
         
         [[NSAnimationContext currentContext]setDuration: 0];
         [_tableview noteHeightOfRowsWithIndexesChanged: [NSIndexSet indexSetWithIndex: 0]];

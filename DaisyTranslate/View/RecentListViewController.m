@@ -28,7 +28,20 @@
 - (void)awakeFromNib
 {
     self.contentView.delegate = self;
-     [self.contentView setDataSource: [[LPCommon shareCommon] allLanguages]];
+    
+    [self.contentView setDataSource: [[LPCommon shareCommon] allLanguages]];
+    
+}
+
+- (void)setIsFromPop:(BOOL)isFromPop
+{
+    _isFromPop = isFromPop;
+    self.contentView.isFromPop = isFromPop;
+}
+
+- (void)layoutItem
+{
+    [self.contentView layoutItem];
 }
 
 - (void)lanChoose:(ContainerView *)view LanObject:(LPLanaguageObject *)obj;
@@ -72,7 +85,7 @@
     for (LanItem *item in _items) {
         if (CGRectContainsPoint(item.frame, point)) {
             if (item.index == _mouseDownIndex) {
-                if (_delegate && [_delegate respondsToSelector: @selector(lanChoose:LanObject:)]) {
+                if (item.enable && _delegate && [_delegate respondsToSelector: @selector(lanChoose:LanObject:)]) {
                     [_delegate lanChoose: self LanObject: item.lanObj];
                     break;
                 }
@@ -85,7 +98,6 @@
 {
     if (![_dataSource isEqualTo: dataSource]) {
         _dataSource = dataSource;
-        [self layoutItem];
     }
 }
 
@@ -99,6 +111,17 @@
     for (NSInteger i = _dataSource.count - 1; i >= 0; i--) {
         LPLanaguageObject *object = _dataSource[i];
         LanItem *item = [[LanItem alloc] init];
+
+        if (_isFromPop) {
+            item.enable = YES;
+        } else {
+            if ([[LPCommon shareCommon].fromLan.key isEqualToString: @"yue"] || [[LPCommon shareCommon].fromLan.key isEqualToString: @"wyw"]) {
+                if ([object.key isEqualToString: @"zh"]) {
+                    item.enable = YES;
+                } else  item.enable = NO;
+            } else
+                item.enable = YES;
+        }
         item.lanObj = object;
         item.index = i;
         item.frame = NSMakeRect(ContentMargin.left + (i % 3) * ItemSize.width, NSHeight(self.frame) - (ContentMargin.top + (i / 3) * ItemSize.height) - ContentMargin.bottom, ItemSize.width, ItemSize.height);
@@ -120,13 +143,18 @@
 
 @implementation LanItem
 
+
 - (void)draw:(CGContextRef)ctx;
 {
     if (self.lanObj.name.length) {
+        NSColor *color = [NSColor grayColor];
+        if (_enable) {
+            color = [NSColor whiteColor];
+        }
         NSSize fontSize = [self.lanObj.name sizeWithAttributes: @{NSFontAttributeName : [NSFont systemFontOfSize: 12]}];
         CGFloat offy = (self.frame.size.height - fontSize.height) * .5;
         [self.lanObj.name drawInRect: NSMakeRect(NSMinX(self.frame), offy + NSMinY(self.frame), fontSize.width, fontSize.height)
-            withAttributes: @{NSFontAttributeName : [NSFont systemFontOfSize: 12], NSForegroundColorAttributeName : [NSColor whiteColor]}];
+            withAttributes: @{NSFontAttributeName : [NSFont systemFontOfSize: 12], NSForegroundColorAttributeName : color}];
     }
 }
 

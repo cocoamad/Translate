@@ -2,8 +2,8 @@
 /* Class = "NSMenuItem"; title = "Customize Toolbar…"; ObjectID = "1UK-8n-QPP"; */
 "1UK-8n-QPP.title" = "Customize Toolbar…";
 
-/* Class = "NSMenuItem"; title = "DaisyTranslate"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "DaisyTranslate";
+/* Class = "NSMenuItem"; title = "aTranslator"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "aTranslator";
 
 /* Class = "NSMenu"; title = "Find"; ObjectID = "1b7-l0-nxx"; */
 "1b7-l0-nxx.title" = "Find";
@@ -35,8 +35,8 @@
 /* Class = "NSMenuItem"; title = "Find"; ObjectID = "4EN-yA-p0u"; */
 "4EN-yA-p0u.title" = "Find";
 
-/* Class = "NSMenuItem"; title = "Quit DaisyTranslate"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Quit DaisyTranslate";
+/* Class = "NSMenuItem"; title = "Quit aTranslator"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit aTranslator";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
 "5QF-Oa-p0T.title" = "Edit";
@@ -44,8 +44,8 @@
 /* Class = "NSMenuItem"; title = "Copy Style"; ObjectID = "5Vv-lz-BsD"; */
 "5Vv-lz-BsD.title" = "Copy Style";
 
-/* Class = "NSMenuItem"; title = "About DaisyTranslate"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "About DaisyTranslate";
+/* Class = "NSMenuItem"; title = "About aTranslator"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About aTranslator";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "6dh-zS-Vam"; */
 "6dh-zS-Vam.title" = "Redo";
@@ -92,8 +92,8 @@
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "Help";
 
-/* Class = "NSMenuItem"; title = "DaisyTranslate Help"; ObjectID = "FKE-Sm-Kum"; */
-"FKE-Sm-Kum.title" = "DaisyTranslate Help";
+/* Class = "NSMenuItem"; title = "aTranslator Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "aTranslator Help";
 
 /* Class = "NSMenuItem"; title = "Text"; ObjectID = "Fal-I4-PZk"; */
 "Fal-I4-PZk.title" = "Text";
@@ -173,8 +173,8 @@
 /* Class = "NSMenuItem"; title = "Baseline"; ObjectID = "OaQ-X3-Vso"; */
 "OaQ-X3-Vso.title" = "Baseline";
 
-/* Class = "NSMenuItem"; title = "Hide DaisyTranslate"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Hide DaisyTranslate";
+/* Class = "NSMenuItem"; title = "Hide aTranslator"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Hide aTranslator";
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "OwM-mh-QMV"; */
 "OwM-mh-QMV.title" = "Find Previous";
@@ -371,8 +371,8 @@
 /* Class = "NSWindow"; title = "设置"; ObjectID = "uCA-Wc-4i3"; */
 "uCA-Wc-4i3.title" = "设置";
 
-/* Class = "NSMenu"; title = "DaisyTranslate"; ObjectID = "uQy-DD-JDr"; */
-"uQy-DD-JDr.title" = "DaisyTranslate";
+/* Class = "NSMenu"; title = "aTranslator"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "aTranslator";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "uRl-iY-unG"; */
 "uRl-iY-unG.title" = "Cut";

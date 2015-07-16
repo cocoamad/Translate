@@ -23,12 +23,14 @@
 	<key>ru</key>
 	<string>Russian</string>
 	<key>de</key>
-	<string>Greek</string>
+	<string>German</string>
 	<key>ara</key>
 	<string>Arabic</string>
 	<key>fra</key>
 	<string>French</string>
 	<key>th</key>
 	<string>Thai</string>
+	<key>el</key>
+	<string>Greek</string>
 </dict>
 </plist>

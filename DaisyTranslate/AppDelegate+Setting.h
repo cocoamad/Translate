@@ -22,4 +22,6 @@
 
 - (void)initSettingMenu;
 - (void)showSettingMenu:(id)sender;
+
+- (IBAction)showHelp:(id)sender;
 @end

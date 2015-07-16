@@ -131,8 +131,8 @@ static NSString *lock = @"lock";
     } else if (request == self.audioRequest) {
         NSString *audioCachePath = [[self audioCachePath] stringByAppendingPathComponent: [NSString stringWithFormat: @"%@.mp3", [NSString guid]]];
         if (request.responseData.length) {
-            assert([request.responseData writeToFile: audioCachePath atomically: YES]);
-            if ([self.delegate respondsToSelector: @selector(translateString2voiceFinished:source:)]) {
+            BOOL success = [request.responseData writeToFile: audioCachePath atomically: YES];
+            if (success && [self.delegate respondsToSelector: @selector(translateString2voiceFinished:source:)]) {
                 [self.delegate translateString2voiceFinished: audioCachePath source: nil];
             }
         }

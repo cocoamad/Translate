@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -14,6 +15,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="preferenceWindow" destination="uCA-Wc-4i3" id="ozV-dJ-nhT"/>
+                <outlet property="showMainWindowItem" destination="dpe-3k-TXG" id="uW0-Ld-S03"/>
                 <outlet property="tableview" destination="g05-Xm-IT0" id="Gtf-sZ-1uT"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -21,9 +23,9 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="DaisyTranslate" id="1Xt-HY-uBw">
+                <menuItem title="aTranslator" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="DaisyTranslate" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="aTranslator" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
                             <menuItem title="About aTranslator" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -116,18 +118,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="revertDocumentToSaved:" target="-1" id="iJ3-Pv-kwq"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
-                            <menuItem title="Page Setup…" keyEquivalent="P" id="qIS-W8-SiK">
-                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
-                                <connections>
-                                    <action selector="runPageLayout:" target="-1" id="Din-rz-gC5"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Print…" keyEquivalent="p" id="aTl-1u-JFS">
-                                <connections>
-                                    <action selector="print:" target="-1" id="qaZ-4w-aoO"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -630,6 +620,12 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
+                            <menuItem title="Show aTranslator" hidden="YES" id="dpe-3k-TXG">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="menuShowMainWindow:" target="Voe-Tx-rLC" id="BRR-cV-Ikv"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -645,7 +641,7 @@
                         <items>
                             <menuItem title="aTranslator Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
-                                    <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
+                                    <action selector="showHelp:" target="Voe-Tx-rLC" id="0tx-Wo-hx8"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -670,9 +666,10 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="g05-Xm-IT0">
+                                    <rect key="frame" x="0.0" y="0.0" width="553" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn width="550" minWidth="40" maxWidth="1000" id="yNi-by-ZF3">
@@ -780,7 +777,7 @@
                     </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="426" y="-154"/>
+            <point key="canvasLocation" x="550" y="-124"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="pmh-Gm-7am"/>
     </objects>

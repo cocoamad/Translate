@@ -29,20 +29,25 @@ typedef void (^SelectedRowAtIndexBlock)(NSInteger row);
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, assign) IBOutlet ContainerView *contentView;
 @property (nonatomic, copy) SelectedLanBlock selectedLanBlock;
+@property (nonatomic, assign) BOOL isFromPop;
+- (void)layoutItem;
 @end
 
 @interface ContainerView : NSView {
     NSMutableArray *_items;
     BOOL _mouseDownIndex;
 }
+@property (nonatomic, assign) BOOL isFromPop;
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, weak) id <ContainerViewDelegate> delegate;
+- (void)layoutItem;
 @end
 
 @interface LanItem : NSObject
 @property (nonatomic, assign) NSRect frame;
 @property (nonatomic, strong) LPLanaguageObject *lanObj;
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, assign) BOOL enable;
 
 - (void)draw:(CGContextRef)ctx;
 @end

@@ -174,12 +174,12 @@
     
     [_settingMenu addItem: [NSMenuItem separatorItem]];
     
-    newItem = [[NSMenuItem allocWithZone: [NSMenu menuZone]] initWithTitle: NSLocalizedString(@"Support", nil) action: @selector(showSupport) keyEquivalent: @""];
-    [newItem setTarget: self];
-    [newItem setEnabled: YES];
-    [_settingMenu addItem: newItem];
-    
-    [_settingMenu addItem: [NSMenuItem separatorItem]];
+//    newItem = [[NSMenuItem allocWithZone: [NSMenu menuZone]] initWithTitle: NSLocalizedString(@"Support", nil) action: @selector(showSupport) keyEquivalent: @""];
+//    [newItem setTarget: self];
+//    [newItem setEnabled: YES];
+//    [_settingMenu addItem: newItem];
+//    
+//    [_settingMenu addItem: [NSMenuItem separatorItem]];
     
     newItem = [[NSMenuItem allocWithZone: [NSMenu menuZone]] initWithTitle: NSLocalizedString(@"Quit aTranslator", nil) action: @selector(quit) keyEquivalent: @"q"];
     [newItem setTarget: self];
@@ -187,10 +187,16 @@
     [_settingMenu addItem: newItem];
 }
 
+- (IBAction)showHelp:(id)sender;
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: @"http://www.cocoamad.com/post/category/2015-04-05"]];
+}
+
 - (void)showSettingMenu:(id)sender
 {
     [_settingMenu popUpMenuPositioningItem: nil atLocation: [sender frame].origin inView: self.window.titleBarView];
 }
+
 
 - (void)showSupport
 {
